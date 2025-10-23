@@ -1,0 +1,182 @@
+package com.ignitech.esgcompanion.presentation.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.ignitech.esgcompanion.data.entity.*
+import com.ignitech.esgcompanion.domain.entity.ESGPillar
+import com.ignitech.esgcompanion.data.repository.ESGAssessmentRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+data class ExpertTrackerUiState(
+    val isLoading: Boolean = false,
+    val activities: List<ESGTrackerEntity> = emptyList(),
+    val kpis: List<ESGTrackerKPIEntity> = emptyList(),
+    val selectedPillar: ESGPillar? = null,
+    val selectedStatus: TrackerStatus? = null,
+    val selectedPriority: TrackerPriority? = null,
+    val isFilterVisible: Boolean = false,
+    val totalActivities: Int = 0,
+    val completedActivities: Int = 0,
+    val overdueActivities: Int = 0,
+    val verifiedActivities: Int = 0,
+    val kpiCount: Int = 0,
+    val pendingVerifications: Int = 0,
+    val error: String? = null
+)
+
+@HiltViewModel
+class ExpertTrackerViewModel @Inject constructor(
+    private val repository: ESGAssessmentRepository
+) : ViewModel() {
+    
+    private val _uiState = MutableStateFlow(ExpertTrackerUiState())
+    val uiState: StateFlow<ExpertTrackerUiState> = _uiState.asStateFlow()
+    
+    private val userId = "expert_user_1" // TODO: Get from auth
+    
+    init {
+        loadTrackerData()
+    }
+    
+    fun loadTrackerData() {
+        viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true, error = null) }
+            
+            try {
+                // Initialize tracker data if needed
+                repository.initializeTrackerData()
+                
+                // Load activities and KPIs using Flow
+                repository.getTrackerActivitiesByUser(userId).collect { activities ->
+                    repository.getTrackerKPIsByUser(userId).collect { kpis ->
+                        // Calculate statistics
+                        val totalActivities = activities.size
+                        val completedActivities = activities.count { it.status == TrackerStatus.COMPLETED }
+                        val overdueActivities = activities.count { it.status == TrackerStatus.OVERDUE }
+                        val verifiedActivities = activities.count { it.isVerified }
+                        val kpiCount = kpis.size
+                        val pendingVerifications = activities.count { 
+                            it.status == TrackerStatus.COMPLETED && !it.isVerified 
+                        }
+                        
+                        _uiState.update {
+                            it.copy(
+                                isLoading = false,
+                                activities = activities,
+                                kpis = kpis,
+                                totalActivities = totalActivities,
+                                completedActivities = completedActivities,
+                                overdueActivities = overdueActivities,
+                                verifiedActivities = verifiedActivities,
+                                kpiCount = kpiCount,
+                                pendingVerifications = pendingVerifications
+                            )
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = e.message ?: "Có lỗi xảy ra"
+                    )
+                }
+            }
+        }
+    }
+    
+    fun selectPillar(pillar: ESGPillar?) {
+        _uiState.update { it.copy(selectedPillar = pillar) }
+        filterActivities()
+    }
+    
+    fun selectStatus(status: TrackerStatus?) {
+        _uiState.update { it.copy(selectedStatus = status) }
+        filterActivities()
+    }
+    
+    fun selectPriority(priority: TrackerPriority?) {
+        _uiState.update { it.copy(selectedPriority = priority) }
+        filterActivities()
+    }
+    
+    fun toggleFilter() {
+        _uiState.update { it.copy(isFilterVisible = !it.isFilterVisible) }
+    }
+    
+    fun showAddActivity() {
+        // TODO: Navigate to add activity screen
+    }
+    
+    fun openActivity(activity: ESGTrackerEntity) {
+        // TODO: Navigate to activity detail screen
+    }
+    
+    fun openKPI(kpi: ESGTrackerKPIEntity) {
+        // TODO: Navigate to KPI detail screen
+    }
+    
+    fun updateActivityStatus(activityId: String, status: TrackerStatus) {
+        viewModelScope.launch {
+            try {
+                repository.updateTrackerActivityStatus(activityId, status)
+                loadTrackerData() // Refresh data
+            } catch (e: Exception) {
+                _uiState.update { it.copy(error = e.message ?: "Có lỗi khi cập nhật trạng thái") }
+            }
+        }
+    }
+    
+    fun updateKPIValue(kpiId: String, value: Double) {
+        viewModelScope.launch {
+            try {
+                repository.updateTrackerKPIValue(kpiId, value)
+                loadTrackerData() // Refresh data
+            } catch (e: Exception) {
+                _uiState.update { it.copy(error = e.message ?: "Có lỗi khi cập nhật KPI") }
+            }
+        }
+    }
+    
+    fun verifyActivity(activityId: String) {
+        viewModelScope.launch {
+            try {
+                // TODO: Implement verification logic
+                loadTrackerData() // Refresh data
+            } catch (e: Exception) {
+                _uiState.update { it.copy(error = e.message ?: "Có lỗi khi xác minh hoạt động") }
+            }
+        }
+    }
+    
+    fun verifyKPI(kpiId: String) {
+        viewModelScope.launch {
+            try {
+                // TODO: Implement KPI verification logic
+                loadTrackerData() // Refresh data
+            } catch (e: Exception) {
+                _uiState.update { it.copy(error = e.message ?: "Có lỗi khi xác minh KPI") }
+            }
+        }
+    }
+    
+    private fun filterActivities() {
+        viewModelScope.launch {
+            val currentState = _uiState.value
+            
+            repository.getTrackerActivitiesByUser(userId).collect { allActivities ->
+                val filteredActivities = allActivities.filter { activity ->
+                    val pillarMatch = currentState.selectedPillar?.let { activity.pillar == it } ?: true
+                    val statusMatch = currentState.selectedStatus?.let { activity.status == it } ?: true
+                    val priorityMatch = currentState.selectedPriority?.let { activity.priority == it } ?: true
+                    pillarMatch && statusMatch && priorityMatch
+                }
+                
+                _uiState.update { it.copy(activities = filteredActivities) }
+            }
+        }
+    }
+}

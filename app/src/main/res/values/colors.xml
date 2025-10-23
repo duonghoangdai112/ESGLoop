@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- ESG Theme Colors -->
+    <color name="esg_success">#FF4CAF50</color>
+    <color name="esg_warning">#FFFF9800</color>
+    <color name="esg_info">#FF2E7D32</color>
+    <color name="esg_error">#FFF44336</color>
+    
+    <!-- Status Colors -->
+    <color name="status_not_started">#FF9E9E9E</color>
+    <color name="status_in_progress">#FFFF9800</color>
+    <color name="status_completed">#FF4CAF50</color>
+    
+    <!-- Background Colors -->
+    <color name="background_primary">#FFFFFFFF</color>
+    <color name="background_secondary">#FFF5F8F0</color>
+    <color name="background_surface">#FFF1F8E9</color>
+    <color name="background_surface_variant">#FFE8F5E8</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FF212121</color>
+    <color name="text_secondary">#FF757575</color>
+    <color name="text_hint">#FFBDBDBD</color>
+    <color name="text_on_primary">#FFFFFFFF</color>
+    <color name="text_on_surface">#FF1C1B1F</color>
+    <color name="text_on_surface_variant">#FF49454F</color>
+    
+    <!-- Border Colors -->
+    <color name="border_light">#FFE0E0E0</color>
+    <color name="border_medium">#FFBDBDBD</color>
+    <color name="border_dark">#FF757575</color>
+    <color name="border_card">#FFE8E8E8</color>
+    
+    <!-- Overlay Colors -->
+    <color name="overlay_light">#1A000000</color>
+    <color name="overlay_medium">#33000000</color>
+    <color name="overlay_dark">#4D000000</color>
+    
+    <!-- Pillar Specific Colors -->
+    <color name="pillar_environmental">#FF4CAF50</color>
+    <color name="pillar_social">#FF2E7D32</color>
+    <color name="pillar_governance">#FFFF9800</color>
+    
+    <!-- Interactive Colors -->
+    <color name="interactive_primary">#FF2E7D32</color>
+    <color name="interactive_secondary">#FF4CAF50</color>
+    <color name="interactive_disabled">#FFBDBDBD</color>
+</resources>

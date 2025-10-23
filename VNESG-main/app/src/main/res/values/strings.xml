@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">ESG Companion</string>
+    
+    <!-- ESG Specific -->
+    <string name="esg_title">ESG Companion</string>
+    <string name="esg_subtitle">Sustainable Transformation Journey</string>
+    <string name="esg_environmental">Environmental</string>
+    <string name="esg_social">Social</string>
+    <string name="esg_governance">Governance</string>
+    
+    
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    
+    <!-- Splash Screen -->
+    <string name="splash_app_name">VNESG</string>
+    <string name="splash_tagline">Clean Architecture Template</string>
+    
+    <!-- Login Screen -->
+    <string name="login_welcome_back">Welcome Back</string>
+    <string name="login_sign_in_account">Sign in to your account</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_forgot_password">Forgot Password?</string>
+    <string name="login_sign_in">Sign In</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_sign_up">Sign Up</string>
+    <string name="login_show_password">Show password</string>
+    <string name="login_hide_password">Hide password</string>
+    
+    <!-- Register Screen -->
+    <string name="register_create_account">Create Account</string>
+    <string name="register_sign_up_started">Sign up to get started</string>
+    <string name="register_full_name">Full Name</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_password">Confirm Password</string>
+    <string name="register_sign_up">Sign Up</string>
+    <string name="register_have_account">Already have an account?</string>
+    <string name="register_sign_in">Sign In</string>
+    <string name="register_show_password">Show password</string>
+    <string name="register_hide_password">Hide password</string>
+    
+    <!-- Forgot Password Screen -->
+    <string name="forgot_password_title">Forgot Password?</string>
+    <string name="forgot_password_description">Enter your email address and we\'ll send you a link to reset your password.</string>
+    <string name="forgot_password_email">Email</string>
+    <string name="forgot_password_send_reset_link">Send Reset Link</string>
+    <string name="forgot_password_success">Reset link sent successfully! Please check your email.</string>
+    <string name="forgot_password_remember">Remember your password?</string>
+    <string name="forgot_password_sign_in">Sign In</string>
+    
+    <!-- User Screen -->
+    <string name="users_title">Users</string>
+    <string name="users_search_placeholder">Search users...</string>
+    <string name="users_no_users_found">No users found</string>
+    
+    <!-- Validation Messages -->
+    <string name="validation_email_required">Email is required</string>
+    <string name="validation_email_invalid">Please enter a valid email</string>
+    <string name="validation_password_required">Password is required</string>
+    <string name="validation_password_min_length">Password must be at least %d characters</string>
+    <string name="validation_name_required">Name is required</string>
+    <string name="validation_name_max_length">Name must be less than %d characters</string>
+    <string name="validation_confirm_password_required">Please confirm your password</string>
+    <string name="validation_passwords_not_match">Passwords do not match</string>
+    
+    <!-- Error Messages -->
+    <string name="error_login_failed">Login failed</string>
+    <string name="error_registration_failed">Registration failed</string>
+    <string name="error_send_reset_link_failed">Failed to send reset link</string>
+    <string name="error_unknown">Unknown error</string>
+</resources>
