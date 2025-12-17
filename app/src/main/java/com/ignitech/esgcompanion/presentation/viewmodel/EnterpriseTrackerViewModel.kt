@@ -78,7 +78,7 @@ class EnterpriseTrackerViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = e.message ?: "Có lỗi xảy ra"
+                        error = e.message ?: "An error occurred"
                     )
                 }
             }

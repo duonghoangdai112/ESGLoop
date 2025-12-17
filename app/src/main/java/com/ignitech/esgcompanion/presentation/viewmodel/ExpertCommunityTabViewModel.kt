@@ -29,25 +29,25 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                 quickActions = listOf(
                     CommunityQuickAction(
                         id = "create_post",
-                        title = "Tạo bài viết",
+                        title = "Create Post",
                         icon = Icons.Default.Create,
                         color = androidx.compose.ui.graphics.Color(0xFF4CAF50)
                     ),
                     CommunityQuickAction(
                         id = "ask_question",
-                        title = "Đặt câu hỏi",
+                        title = "Ask Question",
                         icon = Icons.Default.QuestionAnswer,
                         color = androidx.compose.ui.graphics.Color(0xFF2196F3)
                     ),
                     CommunityQuickAction(
                         id = "share_insight",
-                        title = "Chia sẻ",
+                        title = "Share",
                         icon = Icons.Default.Share,
                         color = androidx.compose.ui.graphics.Color(0xFFFF9800)
                     ),
                     CommunityQuickAction(
                         id = "join_event",
-                        title = "Tham gia sự kiện",
+                        title = "Join Event",
                         icon = Icons.Default.Event,
                         color = androidx.compose.ui.graphics.Color(0xFF9C27B0)
                     )
@@ -55,8 +55,8 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                 featuredDiscussions = listOf(
                     CommunityDiscussion(
                         id = "disc_001",
-                        title = "Xu hướng ESG mới nhất 2024",
-                        content = "Chia sẻ về những xu hướng ESG đang phát triển mạnh trong năm 2024 và tác động đến doanh nghiệp...",
+                        title = "Latest ESG Trends 2024",
+                        content = "Sharing about ESG trends that are developing strongly in 2024 and their impact on businesses...",
                         authorName = "Nguyễn Văn A",
                         authorId = "user_001",
                         pillar = com.ignitech.esgcompanion.domain.entity.ESGPillar.ENVIRONMENTAL,
@@ -68,8 +68,8 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     CommunityDiscussion(
                         id = "disc_002",
-                        title = "Kinh nghiệm triển khai ESG tại doanh nghiệp",
-                        content = "Chia sẻ kinh nghiệm thực tế về việc triển khai các chương trình ESG tại doanh nghiệp...",
+                        title = "Experience in Implementing ESG at Enterprises",
+                        content = "Sharing practical experience on implementing ESG programs at enterprises...",
                         authorName = "Trần Thị B",
                         authorId = "user_002",
                         pillar = com.ignitech.esgcompanion.domain.entity.ESGPillar.SOCIAL,
@@ -83,8 +83,8 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                 recentDiscussions = listOf(
                     CommunityDiscussion(
                         id = "disc_003",
-                        title = "Thách thức trong báo cáo ESG",
-                        content = "Thảo luận về những thách thức mà doanh nghiệp gặp phải khi thực hiện báo cáo ESG...",
+                        title = "Challenges in ESG Reporting",
+                        content = "Discussion about challenges that enterprises face when implementing ESG reporting...",
                         authorName = "Lê Văn C",
                         authorId = "user_003",
                         pillar = com.ignitech.esgcompanion.domain.entity.ESGPillar.GOVERNANCE,
@@ -95,8 +95,8 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     CommunityDiscussion(
                         id = "disc_004",
-                        title = "Công nghệ xanh trong sản xuất",
-                        content = "Ứng dụng công nghệ xanh trong quy trình sản xuất để giảm tác động môi trường...",
+                        title = "Green Technology in Manufacturing",
+                        content = "Application of green technology in manufacturing processes to reduce environmental impact...",
                         authorName = "Phạm Thị D",
                         authorId = "user_004",
                         pillar = com.ignitech.esgcompanion.domain.entity.ESGPillar.ENVIRONMENTAL,
@@ -110,21 +110,21 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                     ExpertProfile(
                         id = "expert_001",
                         name = "Dr. Nguyễn Minh",
-                        specialization = "Chuyên gia Môi trường",
+                        specialization = "Environmental Expert",
                         rating = 4.8f,
                         contributionCount = 156
                     ),
                     ExpertProfile(
                         id = "expert_002",
                         name = "Ms. Trần Lan",
-                        specialization = "Chuyên gia Xã hội",
+                        specialization = "Social Expert",
                         rating = 4.6f,
                         contributionCount = 134
                     ),
                     ExpertProfile(
                         id = "expert_003",
                         name = "Mr. Lê Hùng",
-                        specialization = "Chuyên gia Quản trị",
+                        specialization = "Governance Expert",
                         rating = 4.9f,
                         contributionCount = 189
                     )
@@ -133,7 +133,7 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                     CommunityEvent(
                         id = "event_001",
                         title = "Webinar: ESG Reporting 2024",
-                        description = "Hướng dẫn chi tiết về báo cáo ESG theo chuẩn mới nhất",
+                        description = "Detailed guidance on ESG reporting according to the latest standards",
                         type = EventType.WEBINAR,
                         startTime = System.currentTimeMillis() + 86400000,
                         duration = 90,
@@ -142,7 +142,7 @@ class ExpertCommunityTabViewModel @Inject constructor() : ViewModel() {
                     CommunityEvent(
                         id = "event_002",
                         title = "Workshop: Sustainable Finance",
-                        description = "Tài chính bền vững và tác động đến ESG",
+                        description = "Sustainable finance and its impact on ESG",
                         type = EventType.WORKSHOP,
                         startTime = System.currentTimeMillis() + 172800000,
                         duration = 120,

@@ -69,7 +69,7 @@ class ReportViewerViewModel @Inject constructor(
                         isLoading = false,
                         report = null,
                         reportSections = emptyList(),
-                        error = e.message ?: "Có lỗi xảy ra khi tải báo cáo"
+                        error = e.message ?: "Error loading report"
                     )
                 }
             }

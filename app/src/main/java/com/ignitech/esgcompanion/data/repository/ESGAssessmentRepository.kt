@@ -10,6 +10,7 @@ import com.ignitech.esgcompanion.data.local.entity.ESGQuestionEntity
 import com.ignitech.esgcompanion.data.seed.ESGQuestionSeeder
 import com.ignitech.esgcompanion.data.seed.ESGStudentQuestionSeeder
 import com.ignitech.esgcompanion.data.seed.AssessmentHistorySeeder
+import com.ignitech.esgcompanion.data.seed.LearningHubSeeder
 import com.ignitech.esgcompanion.domain.entity.ESGPillar
 import com.ignitech.esgcompanion.domain.entity.AssessmentStatus
 import com.ignitech.esgcompanion.domain.entity.UserRole
@@ -41,9 +42,49 @@ class ESGAssessmentRepository @Inject constructor(
     
     // Initialize Learning Hub data
     suspend fun initializeLearningHub() {
-        // TODO: Implement learning hub seeder
-        // Currently no mock data available for learning hub
-        println("DEBUG: Learning hub seeder not implemented yet")
+        // Check if data already exists (check all roles)
+        val existingEnterpriseCategories = learningHubDao.getCategoriesByUserRole(UserRole.ENTERPRISE).first()
+        val existingEnterpriseResources = learningHubDao.getResourcesByUserRole(UserRole.ENTERPRISE).first()
+        
+        println("DEBUG: Learning Hub check - Categories: ${existingEnterpriseCategories.size}, Resources: ${existingEnterpriseResources.size}")
+        
+        // Always seed categories if missing
+        if (existingEnterpriseCategories.isEmpty()) {
+            println("DEBUG: Starting to seed Learning Hub categories...")
+            val categories = LearningHubSeeder.getLearningCategories()
+            learningHubDao.insertCategories(categories)
+            println("DEBUG: Seeded ${categories.size} learning categories")
+        } else {
+            println("DEBUG: Categories already exist, skipping")
+        }
+        
+        // Always seed resources if missing
+        if (existingEnterpriseResources.isEmpty()) {
+            println("DEBUG: Starting to seed Learning Hub resources...")
+            val resources = LearningHubSeeder.getLearningResources()
+            try {
+                learningHubDao.insertResources(resources)
+                println("DEBUG: Seeded ${resources.size} learning resources")
+            } catch (e: Exception) {
+                println("DEBUG: ERROR seeding resources: ${e.message}")
+                e.printStackTrace()
+                // Try to seed one by one to identify problematic resource
+                var successCount = 0
+                resources.forEach { resource ->
+                    try {
+                        learningHubDao.insertResource(resource)
+                        successCount++
+                    } catch (ex: Exception) {
+                        println("DEBUG: ERROR inserting resource ${resource.id}: ${ex.message}")
+                    }
+                }
+                println("DEBUG: Successfully seeded $successCount out of ${resources.size} resources")
+            }
+        } else {
+            println("DEBUG: Resources already exist, skipping")
+        }
+        
+        println("DEBUG: Learning Hub seeding completed!")
     }
     
     // Learning Hub methods
@@ -291,6 +332,10 @@ class ESGAssessmentRepository @Inject constructor(
     
     fun getHistoricalAssessmentsByPillar(userId: String, pillar: ESGPillar): Flow<List<ESGAssessmentEntity>> {
         return esgAssessmentDao.getHistoricalAssessmentsByPillar(userId, pillar, true)
+    }
+    
+    suspend fun getCurrentAssessmentByPillar(userId: String, pillar: ESGPillar, period: String): ESGAssessmentEntity? {
+        return esgAssessmentDao.getAssessmentByUserPillarAndPeriod(userId, pillar, period)
     }
     
     // ESGTracker methods

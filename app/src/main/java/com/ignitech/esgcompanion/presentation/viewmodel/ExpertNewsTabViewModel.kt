@@ -35,8 +35,8 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                 breakingNews = listOf(
                     ESGNews(
                         id = "breaking_001",
-                        title = "EU công bố quy định ESG mới",
-                        summary = "Liên minh châu Âu vừa công bố bộ quy định ESG mới sẽ có hiệu lực từ 2025",
+                        title = "EU Announces New ESG Regulations",
+                        summary = "European Union has just announced new ESG regulations that will take effect from 2025",
                         content = """
                             <h2>EU công bố bộ quy định ESG mới - Bước ngoặt quan trọng</h2>
                             
@@ -70,8 +70,8 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     ESGNews(
                         id = "breaking_002",
-                        title = "Việt Nam cam kết Net Zero 2050",
-                        summary = "Chính phủ Việt Nam chính thức cam kết đạt mục tiêu Net Zero vào năm 2050",
+                        title = "Vietnam Commits to Net Zero 2050",
+                        summary = "Vietnamese Government officially commits to achieving Net Zero goal by 2050",
                         content = """
                             <h2>Việt Nam cam kết Net Zero 2050 - Tầm nhìn xanh cho tương lai</h2>
                             
@@ -110,8 +110,8 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                 featuredNews = listOf(
                     ESGNews(
                         id = "featured_001",
-                        title = "Xu hướng ESG trong ngành tài chính 2024",
-                        summary = "Phân tích chi tiết về xu hướng ESG đang định hình ngành tài chính toàn cầu",
+                        title = "ESG Trends in Finance Industry 2024",
+                        summary = "Detailed analysis of ESG trends shaping the global finance industry",
                         content = """
                             <h2>Xu hướng ESG trong ngành tài chính 2024: Cuộc cách mạng bền vững</h2>
                             
@@ -157,8 +157,8 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     ESGNews(
                         id = "featured_002",
-                        title = "Công nghệ xanh: Giải pháp cho tương lai",
-                        summary = "Các công nghệ xanh đang mở ra cơ hội mới cho doanh nghiệp bền vững",
+                        title = "Green Technology: Solutions for the Future",
+                        summary = "Green technologies are opening new opportunities for sustainable businesses",
                         content = """
                             <h2>Công nghệ xanh: Cuộc cách mạng công nghệ vì môi trường</h2>
                             
@@ -269,8 +269,8 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     ESGNews(
                         id = "latest_002",
-                        title = "Đa dạng hóa nguồn nhân lực trong ESG",
-                        summary = "Tầm quan trọng của đa dạng hóa nguồn nhân lực trong lĩnh vực ESG",
+                        title = "Workforce Diversity in ESG",
+                        summary = "The importance of workforce diversity in the ESG field",
                         content = """
                             <h2>Đa dạng hóa nguồn nhân lực trong ESG: Chìa khóa thành công</h2>
                             
@@ -324,8 +324,8 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     ESGNews(
                         id = "latest_003",
-                        title = "Năng lượng tái tạo tại Việt Nam",
-                        summary = "Tiềm năng và thách thức của năng lượng tái tạo tại Việt Nam",
+                        title = "Renewable Energy in Vietnam",
+                        summary = "Potential and challenges of renewable energy in Vietnam",
                         content = """
                             <h2>Năng lượng tái tạo tại Việt Nam: Tiềm năng to lớn, thách thức không nhỏ</h2>
                             
@@ -414,36 +414,36 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                 expertInsights = listOf(
                     ExpertInsight(
                         id = "insight_001",
-                        title = "Góc nhìn chuyên gia: Tương lai của ESG",
+                        title = "Expert View: The Future of ESG",
                         content = """
-                            <h2>Tương lai của ESG: 5 xu hướng định hình thập kỷ tới</h2>
+                            <h2>The Future of ESG: 5 Trends Shaping the Next Decade</h2>
                             
-                            <p>Là một chuyên gia với hơn 15 năm kinh nghiệm trong lĩnh vực ESG, tôi muốn chia sẻ góc nhìn về những xu hướng sẽ định hình tương lai của ESG trong 5 năm tới. Đây không chỉ là dự báo mà còn là cơ hội cho các doanh nghiệp và cá nhân chuẩn bị sẵn sàng cho cuộc cách mạng bền vững sắp tới.</p>
+                            <p>As an expert with over 15 years of experience in the ESG field, I want to share insights on the trends that will shape the future of ESG in the next 5 years. This is not just a forecast but also an opportunity for businesses and individuals to prepare for the upcoming sustainability revolution.</p>
                             
-                            <h3>1. Tích hợp AI và Machine Learning</h3>
-                            <p>Trí tuệ nhân tạo sẽ trở thành công cụ không thể thiếu trong việc đo lường, dự báo và tối ưu hóa tác động ESG. Từ việc phân tích dữ liệu vệ tinh để theo dõi phá rừng đến dự báo rủi ro khí hậu, AI sẽ giúp các doanh nghiệp đưa ra quyết định chính xác và kịp thời hơn.</p>
+                            <h3>1. Integration of AI and Machine Learning</h3>
+                            <p>Artificial intelligence will become an indispensable tool in measuring, predicting and optimizing ESG impact. From analyzing satellite data to track deforestation to predicting climate risks, AI will help businesses make more accurate and timely decisions.</p>
                             
-                            <h3>2. Chuẩn hóa toàn cầu</h3>
-                            <p>Chúng ta sẽ chứng kiến sự hội tụ của các tiêu chuẩn báo cáo ESG trên toàn cầu. ISSB (International Sustainability Standards Board) sẽ trở thành chuẩn mực chung, giúp các nhà đầu tư so sánh và đánh giá doanh nghiệp một cách công bằng.</p>
+                            <h3>2. Global Standardization</h3>
+                            <p>We will witness the convergence of ESG reporting standards globally. ISSB (International Sustainability Standards Board) will become the common standard, helping investors compare and evaluate businesses fairly.</p>
                             
-                            <h3>3. Tài chính xanh bùng nổ</h3>
-                            <p>Thị trường tài chính xanh sẽ tăng trưởng mạnh mẽ, với ước tính đạt 5 nghìn tỷ USD vào 2030. Các sản phẩm tài chính mới như trái phiếu chuyển đổi xanh và tín dụng carbon sẽ trở nên phổ biến.</p>
+                            <h3>3. Green Finance Explosion</h3>
+                            <p>The green finance market will grow strongly, with an estimated 5 trillion USD by 2030. New financial products such as green transition bonds and carbon credits will become popular.</p>
                             
-                            <h3>4. Đo lường tác động thời gian thực</h3>
-                            <p>IoT và blockchain sẽ cho phép đo lường tác động ESG theo thời gian thực, thay vì báo cáo hàng năm như hiện tại. Điều này sẽ tạo ra sự minh bạch hoàn toàn và trách nhiệm giải trình cao hơn.</p>
+                            <h3>4. Real-time Impact Measurement</h3>
+                            <p>IoT and blockchain will enable real-time ESG impact measurement, instead of annual reporting as currently. This will create complete transparency and higher accountability.</p>
                             
-                            <h3>5. ESG trở thành yếu tố cạnh tranh cốt lõi</h3>
-                            <p>Trong 5 năm tới, ESG sẽ không còn là "nice to have" mà trở thành yếu tố cạnh tranh cốt lõi. Các doanh nghiệp không có chiến lược ESG mạnh mẽ sẽ khó tồn tại trong thị trường.</p>
+                            <h3>5. ESG Becomes Core Competitive Factor</h3>
+                            <p>In the next 5 years, ESG will no longer be "nice to have" but become a core competitive factor. Businesses without strong ESG strategies will struggle to survive in the market.</p>
                             
-                            <h3>Khuyến nghị cho doanh nghiệp Việt Nam:</h3>
+                            <h3>Recommendations for Vietnamese Businesses:</h3>
                             <ol>
-                                <li>Đầu tư ngay vào công nghệ và nhân lực ESG</li>
-                                <li>Thiết lập hệ thống đo lường và báo cáo minh bạch</li>
-                                <li>Tham gia các sáng kiến ESG quốc tế</li>
-                                <li>Xây dựng văn hóa bền vững từ trong ra ngoài</li>
+                                <li>Invest immediately in ESG technology and human resources</li>
+                                <li>Establish transparent measurement and reporting systems</li>
+                                <li>Participate in international ESG initiatives</li>
+                                <li>Build sustainability culture from the inside out</li>
                             </ol>
                             
-                            <p><em>Dr. Nguyễn Minh - Chuyên gia ESG hàng đầu Việt Nam, Cựu Giám đốc Bộ phận Bền vững tại PwC</em></p>
+                            <p><em>Dr. Nguyễn Minh - Leading ESG Expert in Vietnam, Former Director of Sustainability Division at PwC</em></p>
                         """.trimIndent(),
                         expertName = "Dr. Nguyễn Minh",
                         expertId = "expert_001",
@@ -451,71 +451,71 @@ class ExpertNewsTabViewModel @Inject constructor() : ViewModel() {
                     ),
                     ExpertInsight(
                         id = "insight_002",
-                        title = "Thách thức trong đo lường tác động ESG",
+                        title = "Challenges in Measuring ESG Impact",
                         content = """
-                            <h2>Thách thức trong đo lường tác động ESG: Từ lý thuyết đến thực tiễn</h2>
+                            <h2>Challenges in Measuring ESG Impact: From Theory to Practice</h2>
                             
-                            <p>Trong hơn 10 năm làm việc với các doanh nghiệp về ESG, tôi nhận thấy rằng đo lường tác động ESG vẫn là thách thức lớn nhất mà hầu hết các tổ chức đang phải đối mặt. Hôm nay, tôi muốn chia sẻ những kinh nghiệm thực tế và giải pháp cụ thể để vượt qua những thách thức này.</p>
+                            <p>After more than 10 years of working with businesses on ESG, I have found that measuring ESG impact remains the biggest challenge that most organizations are facing. Today, I want to share practical experiences and specific solutions to overcome these challenges.</p>
                             
-                            <h3>Những thách thức chính:</h3>
+                            <h3>Main Challenges:</h3>
                             
-                            <h4>1. Thiếu dữ liệu chất lượng</h4>
-                            <p>Nhiều doanh nghiệp gặp khó khăn trong việc thu thập dữ liệu ESG đáng tin cậy. Dữ liệu thường bị phân tán, không đồng nhất và thiếu tính so sánh.</p>
+                            <h4>1. Lack of Quality Data</h4>
+                            <p>Many businesses struggle to collect reliable ESG data. Data is often scattered, inconsistent and lacks comparability.</p>
                             
-                            <h4>2. Khó khăn trong định lượng tác động xã hội</h4>
-                            <p>Khác với tác động môi trường có thể đo lường bằng số liệu cụ thể, tác động xã hội thường mang tính định tính và khó định lượng.</p>
+                            <h4>2. Difficulty in Quantifying Social Impact</h4>
+                            <p>Unlike environmental impact which can be measured with specific numbers, social impact is often qualitative and difficult to quantify.</p>
                             
-                            <h4>3. Chi phí cao</h4>
-                            <p>Việc thiết lập hệ thống đo lường ESG chuyên nghiệp đòi hỏi đầu tư lớn về công nghệ và nhân lực.</p>
+                            <h4>3. High Costs</h4>
+                            <p>Setting up a professional ESG measurement system requires significant investment in technology and human resources.</p>
                             
-                            <h4>4. Áp lực từ các bên liên quan</h4>
-                            <p>Mỗi bên liên quan có yêu cầu đo lường khác nhau, tạo ra sự phức tạp trong báo cáo.</p>
+                            <h4>4. Pressure from Stakeholders</h4>
+                            <p>Each stakeholder has different measurement requirements, creating complexity in reporting.</p>
                             
-                            <h3>Giải pháp thực tiễn:</h3>
+                            <h3>Practical Solutions:</h3>
                             
-                            <h4>1. Xây dựng framework đo lường rõ ràng</h4>
+                            <h4>1. Build Clear Measurement Framework</h4>
                             <ul>
-                                <li>Sử dụng các tiêu chuẩn quốc tế như GRI, SASB</li>
-                                <li>Thiết lập KPIs phù hợp với ngành nghề</li>
-                                <li>Định nghĩa rõ ràng các chỉ số đo lường</li>
+                                <li>Use international standards such as GRI, SASB</li>
+                                <li>Establish KPIs suitable for the industry</li>
+                                <li>Clearly define measurement indicators</li>
                             </ul>
                             
-                            <h4>2. Đầu tư vào công nghệ</h4>
+                            <h4>2. Invest in Technology</h4>
                             <ul>
-                                <li>Sử dụng phần mềm chuyên dụng cho ESG</li>
-                                <li>Tích hợp IoT để thu thập dữ liệu tự động</li>
-                                <li>Ứng dụng AI để phân tích và dự báo</li>
+                                <li>Use specialized software for ESG</li>
+                                <li>Integrate IoT to automatically collect data</li>
+                                <li>Apply AI for analysis and forecasting</li>
                             </ul>
                             
-                            <h4>3. Đào tạo nhân viên</h4>
+                            <h4>3. Train Employees</h4>
                             <ul>
-                                <li>Chương trình đào tạo ESG chuyên sâu</li>
-                                <li>Chứng chỉ quốc tế về đo lường ESG</li>
-                                <li>Chia sẻ kinh nghiệm từ các chuyên gia</li>
+                                <li>In-depth ESG training programs</li>
+                                <li>International certifications in ESG measurement</li>
+                                <li>Share experiences from experts</li>
                             </ul>
                             
-                            <h4>4. Hợp tác với bên thứ ba</h4>
+                            <h4>4. Collaborate with Third Parties</h4>
                             <ul>
-                                <li>Thuê chuyên gia tư vấn ESG</li>
-                                <li>Tham gia các sáng kiến ngành</li>
-                                <li>Hợp tác với các tổ chức phi lợi nhuận</li>
+                                <li>Hire ESG consulting experts</li>
+                                <li>Participate in industry initiatives</li>
+                                <li>Collaborate with non-profit organizations</li>
                             </ul>
                             
-                            <h3>Case study: Công ty ABC</h3>
-                            <p>Công ty ABC đã thành công trong việc đo lường tác động ESG bằng cách:</p>
+                            <h3>Case Study: Company ABC</h3>
+                            <p>Company ABC successfully measured ESG impact by:</p>
                             <ol>
-                                <li>Thiết lập hệ thống thu thập dữ liệu tự động</li>
-                                <li>Đào tạo 20 nhân viên chuyên về ESG</li>
-                                <li>Hợp tác với đại học để nghiên cứu phương pháp đo lường</li>
-                                <li>Báo cáo minh bạch và thường xuyên</li>
+                                <li>Establishing automatic data collection system</li>
+                                <li>Training 20 employees specialized in ESG</li>
+                                <li>Collaborating with universities to research measurement methods</li>
+                                <li>Reporting transparently and regularly</li>
                             </ol>
                             
-                            <p>Kết quả: Giảm 30% chi phí đo lường, tăng 50% độ chính xác của dữ liệu.</p>
+                            <p>Result: Reduced 30% of measurement costs, increased 50% data accuracy.</p>
                             
-                            <h3>Dự báo tương lai:</h3>
-                            <p>Trong 3-5 năm tới, chúng ta sẽ thấy sự phát triển mạnh mẽ của các công nghệ đo lường ESG, giúp giảm chi phí và tăng độ chính xác. Các tiêu chuẩn quốc tế cũng sẽ được chuẩn hóa hơn, tạo điều kiện thuận lợi cho việc so sánh và đánh giá.</p>
+                            <h3>Future Forecast:</h3>
+                            <p>In the next 3-5 years, we will see strong development of ESG measurement technologies, helping to reduce costs and increase accuracy. International standards will also be more standardized, facilitating comparison and evaluation.</p>
                             
-                            <p><em>Ms. Trần Lan - Chuyên gia tư vấn ESG, Cựu Giám đốc Bền vững tại Deloitte</em></p>
+                            <p><em>Ms. Trần Lan - ESG Consulting Expert, Former Director of Sustainability at Deloitte</em></p>
                         """.trimIndent(),
                         expertName = "Ms. Trần Lan",
                         expertId = "expert_002",

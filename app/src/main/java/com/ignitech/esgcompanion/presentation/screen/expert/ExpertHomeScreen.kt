@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,7 +34,7 @@ import com.ignitech.esgcompanion.presentation.screen.LearningHubScreen
 fun ExpertHomeScreen(
     navController: NavController
 ) {
-    var selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     
     Scaffold(
         bottomBar = {
@@ -593,7 +594,7 @@ fun ExpertHomeContent(
                         // Certifications
                         ExpertProfileItem(
                             icon = Icons.Default.Verified,
-                            title = "Chứng chỉ",
+                            title = "Certifications",
                             value = "ESG Expert Level 3",
                             color = Color(0xFF4CAF50)
                         )
@@ -603,8 +604,8 @@ fun ExpertHomeContent(
                         // Specializations
                         ExpertProfileItem(
                             icon = Icons.Default.Star,
-                            title = "Chuyên môn",
-                            value = "Môi trường, Xã hội, Quản trị",
+                            title = "Specialization",
+                            value = "Environmental, Social, Governance",
                             color = Color(0xFFFF9800)
                         )
                         
@@ -613,8 +614,8 @@ fun ExpertHomeContent(
                         // Languages
                         ExpertProfileItem(
                             icon = Icons.Default.Language,
-                            title = "Ngôn ngữ",
-                            value = "Tiếng Việt, Tiếng Anh",
+                            title = "Languages",
+                            value = "Vietnamese, English",
                             color = Color(0xFF2196F3)
                         )
                     }
@@ -632,6 +633,7 @@ fun ExpertLearningContent(
 ) {
     // Import LearningHubScreen and display it directly
     LearningHubScreen(
+        navController = navController,
         modifier = modifier
     )
 }
@@ -894,9 +896,9 @@ fun ExpertConsultationCard(
                 )
                 Surface(
                     color = when (status) {
-                        "Hoàn thành" -> Color(0xFF4CAF50).copy(alpha = 0.1f)
-                        "Đang thực hiện" -> Color(0xFFFF9800).copy(alpha = 0.1f)
-                        "Sắp bắt đầu" -> Color(0xFF2196F3).copy(alpha = 0.1f)
+                        "Completed" -> Color(0xFF4CAF50).copy(alpha = 0.1f)
+                        "In Progress" -> Color(0xFFFF9800).copy(alpha = 0.1f)
+                        "Starting Soon" -> Color(0xFF2196F3).copy(alpha = 0.1f)
                         else -> colorResource(id = R.color.border_card)
                     },
                     shape = RoundedCornerShape(12.dp)
@@ -906,9 +908,9 @@ fun ExpertConsultationCard(
                         modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                         style = MaterialTheme.typography.bodySmall,
                         color = when (status) {
-                            "Hoàn thành" -> Color(0xFF4CAF50)
-                            "Đang thực hiện" -> Color(0xFFFF9800)
-                            "Sắp bắt đầu" -> Color(0xFF2196F3)
+                            "Completed" -> Color(0xFF4CAF50)
+                            "In Progress" -> Color(0xFFFF9800)
+                            "Starting Soon" -> Color(0xFF2196F3)
                             else -> colorResource(id = R.color.text_secondary)
                         },
                         fontWeight = FontWeight.Medium
@@ -919,7 +921,7 @@ fun ExpertConsultationCard(
             Spacer(modifier = Modifier.height(8.dp))
             
             Text(
-                text = "Khách hàng: $client",
+                text = "Client: $client",
                 style = MaterialTheme.typography.bodyMedium,
                 color = colorResource(id = R.color.text_secondary)
             )
@@ -927,7 +929,7 @@ fun ExpertConsultationCard(
             Spacer(modifier = Modifier.height(4.dp))
             
             Text(
-                text = "Giá trị: $amount",
+                text = "Value: $amount",
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Medium,
                 color = colorResource(id = R.color.interactive_primary)
@@ -1002,7 +1004,7 @@ fun ExpertPillarStatItem(
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-                text = "$projectCount dự án",
+                text = "$projectCount projects",
                 style = MaterialTheme.typography.bodyMedium,
                 color = colorResource(id = R.color.text_secondary)
             )

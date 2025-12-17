@@ -274,12 +274,12 @@ fun ESGAssessmentFormScreen(
                     ) {
                         Icon(
                             Icons.Default.Quiz,
-                            contentDescription = "Không có câu hỏi",
+                            contentDescription = "No questions",
                             modifier = Modifier.size(48.dp),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = "Không có câu hỏi nào",
+                            text = "No questions available",
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -350,15 +350,15 @@ fun ProgressSection(
         ) {
             Column {
                 Text(
-                    text = "Tiến độ đánh giá",
+                    text = "Assessment Progress",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
                     Text(
                         text = if (isSinglePillarMode) {
-                            "Câu hỏi ${currentQuestion + 1}/${totalQuestions}"
+                            "Question ${currentQuestion + 1}/${totalQuestions}"
                         } else {
-                            "Câu hỏi ${currentQuestion + 1}/${totalQuestions} - Trụ cột ${currentTab + 1}/${totalTabs}"
+                            "Question ${currentQuestion + 1}/${totalQuestions} - Pillar ${currentTab + 1}/${totalTabs}"
                         },
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -495,7 +495,7 @@ fun QuestionCard(
                         tint = MaterialTheme.colorScheme.error
                     )
                     Text(
-                        text = "Câu hỏi bắt buộc",
+                        text = "Required question",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.error,
                         fontWeight = FontWeight.Medium
@@ -628,7 +628,7 @@ fun AssessmentBottomBar(
             ) {
                 Icon(Icons.Default.Check, contentDescription = null, modifier = Modifier.size(18.dp))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Hoàn thành")
+                Text("Complete")
             }
         }
     }
@@ -646,7 +646,7 @@ fun AssessmentResultDialog(
         containerColor = Color.White,
         title = {
             Text(
-                text = "Xác nhận hoàn thành đánh giá",
+                text = "Confirm Assessment Completion",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
@@ -654,13 +654,13 @@ fun AssessmentResultDialog(
         text = {
             Column {
                 Text(
-                    text = "Bạn đã chắc chắn muốn nộp kết quả này chưa?",
+                    text = "Are you sure you want to submit this result?",
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 Text(
-                    text = "Điểm ESG dự kiến: ${score.first}/${score.second}",
+                    text = "Expected ESG Score: ${score.first}/${score.second}",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
@@ -669,12 +669,12 @@ fun AssessmentResultDialog(
         },
         confirmButton = {
             Button(onClick = onSubmit) {
-                Text("Xác nhận")
+                Text("Confirm")
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Hủy")
+                Text("Cancel")
             }
         }
     )
@@ -683,9 +683,9 @@ fun AssessmentResultDialog(
 // Helper Functions
 private fun getPillarName(pillar: ESGPillar): String {
     return when (pillar) {
-        ESGPillar.ENVIRONMENTAL -> "Môi trường"
-        ESGPillar.SOCIAL -> "Xã hội"
-        ESGPillar.GOVERNANCE -> "Quản trị"
+        ESGPillar.ENVIRONMENTAL -> "Environmental"
+        ESGPillar.SOCIAL -> "Social"
+        ESGPillar.GOVERNANCE -> "Governance"
     }
 }
 

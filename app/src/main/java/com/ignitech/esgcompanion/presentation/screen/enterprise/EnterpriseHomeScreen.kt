@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,7 +42,7 @@ fun EnterpriseHomeScreen(
     navController: NavHostController
 ) {
     val colors = AppColors()
-    var selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     
     Scaffold(
         bottomBar = {
@@ -180,7 +181,7 @@ fun EnterpriseHomeScreen(
         when (selectedTab) {
             0 -> HomeContent(navController = navController, modifier = Modifier.padding(paddingValues))
             1 -> EnterpriseAssessmentScreen(navController = navController, modifier = Modifier.padding(paddingValues))
-            2 -> LearningHubScreen(modifier = Modifier.padding(paddingValues))
+            2 -> LearningHubScreen(navController = navController, modifier = Modifier.padding(paddingValues))
             3 -> EnterpriseTrackerScreen(navController = navController, modifier = Modifier.padding(paddingValues))
             4 -> EnterpriseExpertScreen(navController = navController, modifier = Modifier.padding(paddingValues))
         }

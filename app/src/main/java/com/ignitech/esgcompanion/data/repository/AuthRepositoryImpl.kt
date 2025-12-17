@@ -28,15 +28,15 @@ class AuthRepositoryImpl @Inject constructor(
             android.util.Log.d("AuthRepositoryImpl", "Found user: $user")
             
             if (user == null) {
-                // User không tồn tại
+                // User does not exist
                 android.util.Log.d("AuthRepositoryImpl", "User not found")
-                emit(Result.Error(Exception("Tài khoản không tồn tại")))
+                emit(Result.Error(Exception("Account does not exist")))
             } else if (user.password != password) {
-                // Password không đúng
+                // Password incorrect
                 android.util.Log.d("AuthRepositoryImpl", "Password incorrect")
-                emit(Result.Error(Exception("Mật khẩu không chính xác")))
+                emit(Result.Error(Exception("Incorrect password")))
             } else {
-                // Login thành công - set isActive = true
+                // Login successful - set isActive = true
                 android.util.Log.d("AuthRepositoryImpl", "Login successful, setting isActive = true")
                 userDao.setCurrentUser(user.id) // Set isActive = true
                 // Save user ID to preferences for session persistence

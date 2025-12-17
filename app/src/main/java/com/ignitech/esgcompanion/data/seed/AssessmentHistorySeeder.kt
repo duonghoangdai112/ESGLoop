@@ -12,57 +12,110 @@ object AssessmentHistorySeeder {
         val oneDay = 24 * 60 * 60 * 1000L
         
         return listOf(
-            // ========== Q2-2025 (Quý hiện tại) ==========
+            // ========== Q3-2025 (Current Quarter) ==========
+            // Environmental
+            ESGAssessmentEntity(
+                id = "env_q3_2025",
+                userId = userId,
+                title = "Environmental Assessment Q3 2025",
+                description = "Environmental impact assessment for Q3 2025",
+                pillar = ESGPillar.ENVIRONMENTAL,
+                status = AssessmentStatus.COMPLETED,
+                totalScore = 90,
+                maxScore = 100,
+                completedAt = currentTime - oneDay * 5,
+                createdAt = currentTime - oneDay * 10,
+                assessmentPeriod = "Q3-2025",
+                assessmentYear = 2025,
+                assessmentQuarter = 3,
+                isHistorical = false
+            ),
+            // Social
+            ESGAssessmentEntity(
+                id = "social_q3_2025",
+                userId = userId,
+                title = "Social Assessment Q3 2025",
+                description = "Social impact assessment for Q3 2025",
+                pillar = ESGPillar.SOCIAL,
+                status = AssessmentStatus.COMPLETED,
+                totalScore = 93,
+                maxScore = 100,
+                completedAt = currentTime - oneDay * 3,
+                createdAt = currentTime - oneDay * 8,
+                assessmentPeriod = "Q3-2025",
+                assessmentYear = 2025,
+                assessmentQuarter = 3,
+                isHistorical = false
+            ),
+            // Governance
+            ESGAssessmentEntity(
+                id = "gov_q3_2025",
+                userId = userId,
+                title = "Governance Assessment Q3 2025",
+                description = "Corporate governance assessment for Q3 2025",
+                pillar = ESGPillar.GOVERNANCE,
+                status = AssessmentStatus.COMPLETED,
+                totalScore = 91,
+                maxScore = 100,
+                completedAt = currentTime - oneDay * 2,
+                createdAt = currentTime - oneDay * 7,
+                assessmentPeriod = "Q3-2025",
+                assessmentYear = 2025,
+                assessmentQuarter = 3,
+                isHistorical = false
+            ),
+            
+            // ========== Q2-2025 (Historical) ==========
             // Environmental
             ESGAssessmentEntity(
                 id = "env_q2_2025",
                 userId = userId,
-                title = "Đánh giá Môi trường Q2 2025",
-                description = "Đánh giá tác động môi trường quý 2 năm 2025",
+                title = "Environmental Assessment Q2 2025",
+                description = "Environmental impact assessment for Q 2 năm 2025",
                 pillar = ESGPillar.ENVIRONMENTAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 88,
                 maxScore = 100,
-                completedAt = currentTime - oneDay * 5,
-                createdAt = currentTime - oneDay * 10,
+                completedAt = currentTime - oneDay * 35,
+                createdAt = currentTime - oneDay * 40,
                 assessmentPeriod = "Q2-2025",
                 assessmentYear = 2025,
                 assessmentQuarter = 2,
-                isHistorical = false
+                isHistorical = true
             ),
             // Social
             ESGAssessmentEntity(
                 id = "social_q2_2025",
                 userId = userId,
-                title = "Đánh giá Xã hội Q2 2025",
-                description = "Đánh giá tác động xã hội quý 2 năm 2025",
+                title = "Social Assessment Q2 2025",
+                description = "Social impact assessment for Q 2 năm 2025",
                 pillar = ESGPillar.SOCIAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 92,
                 maxScore = 100,
-                completedAt = currentTime - oneDay * 3,
-                createdAt = currentTime - oneDay * 8,
+                completedAt = currentTime - oneDay * 33,
+                createdAt = currentTime - oneDay * 38,
                 assessmentPeriod = "Q2-2025",
                 assessmentYear = 2025,
                 assessmentQuarter = 2,
-                isHistorical = false
+                isHistorical = true
             ),
             // Governance
             ESGAssessmentEntity(
                 id = "gov_q2_2025",
                 userId = userId,
-                title = "Đánh giá Quản trị Q2 2025",
-                description = "Đánh giá quản trị doanh nghiệp quý 2 năm 2025",
+                title = "Governance Assessment Q2 2025",
+                description = "Corporate governance assessment for Q 2 năm 2025",
                 pillar = ESGPillar.GOVERNANCE,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 90,
                 maxScore = 100,
-                completedAt = currentTime - oneDay * 2,
-                createdAt = currentTime - oneDay * 7,
+                completedAt = currentTime - oneDay * 32,
+                createdAt = currentTime - oneDay * 37,
                 assessmentPeriod = "Q2-2025",
                 assessmentYear = 2025,
                 assessmentQuarter = 2,
-                isHistorical = false
+                isHistorical = true
             ),
             
             // ========== Q1-2025 ==========
@@ -70,8 +123,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "env_q1_2025",
                 userId = userId,
-                title = "Đánh giá Môi trường Q1 2025",
-                description = "Đánh giá tác động môi trường quý 1 năm 2025",
+                title = "Environmental Assessment Q1 2025",
+                description = "Environmental impact assessment for Q 1 năm 2025",
                 pillar = ESGPillar.ENVIRONMENTAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 85,
@@ -87,8 +140,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "social_q1_2025",
                 userId = userId,
-                title = "Đánh giá Xã hội Q1 2025",
-                description = "Đánh giá tác động xã hội quý 1 năm 2025",
+                title = "Social Assessment Q1 2025",
+                description = "Social impact assessment for Q 1 năm 2025",
                 pillar = ESGPillar.SOCIAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 90,
@@ -104,8 +157,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "gov_q1_2025",
                 userId = userId,
-                title = "Đánh giá Quản trị Q1 2025",
-                description = "Đánh giá quản trị doanh nghiệp quý 1 năm 2025",
+                title = "Governance Assessment Q1 2025",
+                description = "Corporate governance assessment for Q 1 năm 2025",
                 pillar = ESGPillar.GOVERNANCE,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 87,
@@ -123,8 +176,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "env_q4_2024",
                 userId = userId,
-                title = "Đánh giá Môi trường Q4 2024",
-                description = "Đánh giá tác động môi trường quý 4 năm 2024",
+                title = "Environmental Assessment Q4 2024",
+                description = "Environmental impact assessment for Q 4 năm 2024",
                 pillar = ESGPillar.ENVIRONMENTAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 82,
@@ -140,8 +193,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "social_q4_2024",
                 userId = userId,
-                title = "Đánh giá Xã hội Q4 2024",
-                description = "Đánh giá tác động xã hội quý 4 năm 2024",
+                title = "Social Assessment Q4 2024",
+                description = "Social impact assessment for Q 4 năm 2024",
                 pillar = ESGPillar.SOCIAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 88,
@@ -157,8 +210,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "gov_q4_2024",
                 userId = userId,
-                title = "Đánh giá Quản trị Q4 2024",
-                description = "Đánh giá quản trị doanh nghiệp quý 4 năm 2024",
+                title = "Governance Assessment Q4 2024",
+                description = "Corporate governance assessment for Q 4 năm 2024",
                 pillar = ESGPillar.GOVERNANCE,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 85,
@@ -176,8 +229,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "env_q3_2024",
                 userId = userId,
-                title = "Đánh giá Môi trường Q3 2024",
-                description = "Đánh giá tác động môi trường quý 3 năm 2024",
+                title = "Environmental Assessment Q3 2024",
+                description = "Environmental impact assessment for Q 3 năm 2024",
                 pillar = ESGPillar.ENVIRONMENTAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 80,
@@ -193,8 +246,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "social_q3_2024",
                 userId = userId,
-                title = "Đánh giá Xã hội Q3 2024",
-                description = "Đánh giá tác động xã hội quý 3 năm 2024",
+                title = "Social Assessment Q3 2024",
+                description = "Social impact assessment for Q 3 năm 2024",
                 pillar = ESGPillar.SOCIAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 86,
@@ -210,8 +263,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "gov_q3_2024",
                 userId = userId,
-                title = "Đánh giá Quản trị Q3 2024",
-                description = "Đánh giá quản trị doanh nghiệp quý 3 năm 2024",
+                title = "Governance Assessment Q3 2024",
+                description = "Corporate governance assessment for Q 3 năm 2024",
                 pillar = ESGPillar.GOVERNANCE,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 83,
@@ -229,8 +282,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "env_q2_2024",
                 userId = userId,
-                title = "Đánh giá Môi trường Q2 2024",
-                description = "Đánh giá tác động môi trường quý 2 năm 2024",
+                title = "Environmental Assessment Q2 2024",
+                description = "Environmental impact assessment for Q 2 năm 2024",
                 pillar = ESGPillar.ENVIRONMENTAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 78,
@@ -246,8 +299,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "social_q2_2024",
                 userId = userId,
-                title = "Đánh giá Xã hội Q2 2024",
-                description = "Đánh giá tác động xã hội quý 2 năm 2024",
+                title = "Social Assessment Q2 2024",
+                description = "Social impact assessment for Q 2 năm 2024",
                 pillar = ESGPillar.SOCIAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 84,
@@ -263,8 +316,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "gov_q2_2024",
                 userId = userId,
-                title = "Đánh giá Quản trị Q2 2024",
-                description = "Đánh giá quản trị doanh nghiệp quý 2 năm 2024",
+                title = "Governance Assessment Q2 2024",
+                description = "Corporate governance assessment for Q 2 năm 2024",
                 pillar = ESGPillar.GOVERNANCE,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 81,
@@ -282,8 +335,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "env_q1_2024",
                 userId = userId,
-                title = "Đánh giá Môi trường Q1 2024",
-                description = "Đánh giá tác động môi trường quý 1 năm 2024",
+                title = "Environmental Assessment Q1 2024",
+                description = "Environmental impact assessment for Q 1 năm 2024",
                 pillar = ESGPillar.ENVIRONMENTAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 75,
@@ -299,8 +352,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "social_q1_2024",
                 userId = userId,
-                title = "Đánh giá Xã hội Q1 2024",
-                description = "Đánh giá tác động xã hội quý 1 năm 2024",
+                title = "Social Assessment Q1 2024",
+                description = "Social impact assessment for Q 1 năm 2024",
                 pillar = ESGPillar.SOCIAL,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 82,
@@ -316,8 +369,8 @@ object AssessmentHistorySeeder {
             ESGAssessmentEntity(
                 id = "gov_q1_2024",
                 userId = userId,
-                title = "Đánh giá Quản trị Q1 2024",
-                description = "Đánh giá quản trị doanh nghiệp quý 1 năm 2024",
+                title = "Governance Assessment Q1 2024",
+                description = "Corporate governance assessment for Q 1 năm 2024",
                 pillar = ESGPillar.GOVERNANCE,
                 status = AssessmentStatus.COMPLETED,
                 totalScore = 79,

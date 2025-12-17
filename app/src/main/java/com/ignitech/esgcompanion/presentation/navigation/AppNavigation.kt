@@ -29,6 +29,7 @@ import com.ignitech.esgcompanion.presentation.screen.student.StudentAssessmentSc
 import com.ignitech.esgcompanion.presentation.screen.student.CategoryDetailScreen
 import com.ignitech.esgcompanion.presentation.screen.student.AssignmentDetailScreen
 import com.ignitech.esgcompanion.presentation.screen.student.AssignmentWorkScreen
+import com.ignitech.esgcompanion.presentation.screen.student.StudentQuizTakingScreen
 import com.ignitech.esgcompanion.presentation.screen.instructor.InstructorHomeScreen
 import com.ignitech.esgcompanion.presentation.screen.instructor.InstructorClassesScreen
 import com.ignitech.esgcompanion.presentation.screen.instructor.ClassDetailScreen
@@ -43,6 +44,7 @@ import com.ignitech.esgcompanion.presentation.screen.instructor.AssignmentGrades
 import com.ignitech.esgcompanion.presentation.screen.regulatory.RegulatoryHomeScreen
 import com.ignitech.esgcompanion.presentation.screen.regulatory.RegulatoryAssessmentScreen
 import com.ignitech.esgcompanion.presentation.screen.LearningHubScreen
+import com.ignitech.esgcompanion.presentation.screen.LearningHubCategoryDetailScreen
 import com.ignitech.esgcompanion.presentation.viewmodel.LoginViewModel
 import com.ignitech.esgcompanion.domain.entity.ESGPillar
 import com.ignitech.esgcompanion.domain.entity.ReportStandard
@@ -177,12 +179,16 @@ fun AppNavigation(
             RegulatoryAssessmentScreen(navController = navController)
         }
         
-        composable("learning") {
-            LearningScreen(navController = navController)
+        composable("learning_hub") {
+            LearningHubScreen(navController = navController)
         }
         
-        composable("learning_hub") {
-            LearningHubScreen()
+        composable("learning_hub_category/{categoryId}") { backStackEntry ->
+            val categoryId = backStackEntry.arguments?.getString("categoryId") ?: ""
+            LearningHubCategoryDetailScreen(
+                navController = navController,
+                categoryId = categoryId
+            )
         }
         
         composable("add_activity") {
@@ -329,6 +335,30 @@ fun AppNavigation(
                 quizId = quizId,
                 score = score
             )
+        }
+        
+        // Student Quiz screens
+        composable("student_quiz_taking/{quizId}") { backStackEntry ->
+            val quizId = backStackEntry.arguments?.getString("quizId") ?: ""
+            StudentQuizTakingScreen(
+                navController = navController,
+                quizId = quizId
+            )
+        }
+        
+        composable("student_quiz_results/{quizId}/{score}/{correctAnswers}/{totalQuestions}") { backStackEntry ->
+            val quizId = backStackEntry.arguments?.getString("quizId") ?: ""
+            val score = backStackEntry.arguments?.getString("score")?.toIntOrNull() ?: 0
+            val correctAnswers = backStackEntry.arguments?.getString("correctAnswers")?.toIntOrNull() ?: 0
+            val totalQuestions = backStackEntry.arguments?.getString("totalQuestions")?.toIntOrNull() ?: 0
+            // TODO: Create StudentQuizResultsScreen
+            // StudentQuizResultsScreen(
+            //     navController = navController,
+            //     quizId = quizId,
+            //     score = score,
+            //     correctAnswers = correctAnswers,
+            //     totalQuestions = totalQuestions
+            // )
         }
         
         composable("expert_news_detail/{newsId}") { backStackEntry ->

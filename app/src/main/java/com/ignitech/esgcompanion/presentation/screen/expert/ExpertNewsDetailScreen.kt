@@ -1,5 +1,6 @@
 package com.ignitech.esgcompanion.presentation.screen.expert
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -13,12 +14,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.ignitech.esgcompanion.R
 import com.ignitech.esgcompanion.presentation.viewmodel.ExpertNewsDetailViewModel
 import com.ignitech.esgcompanion.utils.AppColors
 import java.text.SimpleDateFormat
@@ -40,6 +43,7 @@ fun ExpertNewsDetailScreen(
     }
 
     Scaffold(
+        containerColor = Color.White,
         topBar = {
             TopAppBar(
                 title = {
@@ -75,7 +79,9 @@ fun ExpertNewsDetailScreen(
     ) { paddingValues ->
         if (uiState.isLoading) {
             Box(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.White),
                 contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator()
@@ -87,7 +93,7 @@ fun ExpertNewsDetailScreen(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(colors.backgroundSurface)
+                    .background(Color.White)
                     .padding(paddingValues),
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -215,64 +221,58 @@ fun ExpertNewsDetailScreen(
                 
                 // Related Actions
                 item {
-                    Card(
+                    Row(
                         modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = colors.backgroundSurface
-                        ),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        Column(
-                            modifier = Modifier.padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(12.dp)
-                        ) {
-                            Text(
-                                text = "Actions",
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Bold,
-                                color = colors.textPrimary
+                        Button(
+                            onClick = { viewModel.toggleBookmark() },
+                            modifier = Modifier.weight(1f),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = if (uiState.isBookmarked) 
+                                    colorResource(id = R.color.interactive_primary) 
+                                else 
+                                    colorResource(id = R.color.interactive_primary)
                             )
-                            
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(12.dp)
-                            ) {
-                                Button(
-                                    onClick = { viewModel.toggleBookmark() },
-                                    modifier = Modifier.weight(1f),
-                                    colors = ButtonDefaults.buttonColors(
-                                        containerColor = if (uiState.isBookmarked) colors.primary else colors.textSecondary
-                                    )
-                                ) {
-                                    Icon(
-                                        imageVector = if (uiState.isBookmarked) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
-                                        contentDescription = null
-                                    )
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text(
-                                        text = if (uiState.isBookmarked) "Saved" else "Save"
-                                    )
-                                }
-                                
-                                OutlinedButton(
-                                    onClick = { viewModel.shareNews() },
-                                    modifier = Modifier.weight(1f)
-                                ) {
-                                    Icon(
-                                        Icons.Default.Share,
-                                        contentDescription = null
-                                    )
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text("Chia sẻ")
-                                }
-                            }
+                        ) {
+                            Icon(
+                                imageVector = if (uiState.isBookmarked) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                                contentDescription = null,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = if (uiState.isBookmarked) "Saved" else "Save"
+                            )
+                        }
+                        
+                        OutlinedButton(
+                            onClick = { viewModel.shareNews() },
+                            modifier = Modifier.weight(1f),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                contentColor = colorResource(id = R.color.text_secondary)
+                            ),
+                            border = BorderStroke(
+                                width = 1.dp,
+                                color = colorResource(id = R.color.border_card)
+                            )
+                        ) {
+                            Icon(
+                                Icons.Default.Share,
+                                contentDescription = null,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text("Share")
                         }
                     }
                 }
             }
         } else {
             Box(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.White),
                 contentAlignment = Alignment.Center
             ) {
                 Column(

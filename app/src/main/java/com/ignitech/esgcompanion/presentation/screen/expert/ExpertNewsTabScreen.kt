@@ -564,7 +564,7 @@ fun NewsCategoryCard(
             )
             
             Text(
-                text = "${category.newsCount} tin",
+                text = "${category.newsCount} news",
                 style = MaterialTheme.typography.bodySmall,
                 color = colorResource(id = R.color.text_secondary)
             )
@@ -796,7 +796,7 @@ fun ExpertInsightCard(
             )
             
             Text(
-                text = insight.content,
+                text = stripHtmlTags(insight.content),
                 style = MaterialTheme.typography.bodyMedium,
                 color = colorResource(id = R.color.text_secondary),
                 maxLines = 3,
@@ -916,4 +916,26 @@ data class ExpertInsight(
 
 enum class TimeRange {
     TODAY, WEEK, MONTH, YEAR
+}
+
+// Helper function to strip HTML tags and extract plain text
+fun stripHtmlTags(htmlContent: String): String {
+    var result = htmlContent
+    
+    // Remove all HTML tags
+    result = result.replace(Regex("<[^>]*>"), "")
+    
+    // Decode common HTML entities
+    result = result.replace("&nbsp;", " ")
+    result = result.replace("&amp;", "&")
+    result = result.replace("&lt;", "<")
+    result = result.replace("&gt;", ">")
+    result = result.replace("&quot;", "\"")
+    result = result.replace("&#39;", "'")
+    
+    // Clean up multiple spaces and newlines
+    result = result.replace(Regex("\\s+"), " ")
+    result = result.trim()
+    
+    return result
 }

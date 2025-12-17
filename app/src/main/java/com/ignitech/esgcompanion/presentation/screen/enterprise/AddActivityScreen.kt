@@ -425,7 +425,7 @@ fun ActivityTypeSelector(
             }
             Icon(
                 Icons.Default.ArrowDropDown,
-                contentDescription = "Chọn loại hoạt động",
+                contentDescription = "Select activity type",
                 tint = colorResource(id = R.color.text_secondary)
             )
         }
@@ -454,7 +454,7 @@ fun ActivityTypeDialog(
         containerColor = Color.White,
         title = {
             Text(
-                text = "Chọn loại hoạt động",
+                text = "Select Activity Type",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
@@ -476,7 +476,7 @@ fun ActivityTypeDialog(
         confirmButton = {
             TextButton(onClick = onDismiss) {
                 Text(
-                    "Đóng",
+                    "Close",
                     color = colorResource(id = R.color.text_secondary)
                 )
             }
@@ -518,30 +518,30 @@ fun ActivityTypeDialogItem(
         ) {
             Text(
                 text = when (type) {
-                    ESGTrackerType.ENERGY_EFFICIENCY -> "Tiết kiệm năng lượng"
-                    ESGTrackerType.WASTE_REDUCTION -> "Giảm rác thải"
-                    ESGTrackerType.WATER_CONSERVATION -> "Tiết kiệm nước"
-                    ESGTrackerType.RENEWABLE_ENERGY -> "Năng lượng tái tạo"
-                    ESGTrackerType.CARBON_REDUCTION -> "Giảm phát thải"
-                    ESGTrackerType.POLLUTION_CONTROL -> "Kiểm soát ô nhiễm"
-                    ESGTrackerType.BIODIVERSITY -> "Đa dạng sinh học"
-                    ESGTrackerType.SUSTAINABLE_MATERIALS -> "Vật liệu bền vững"
-                    ESGTrackerType.EMPLOYEE_TRAINING -> "Đào tạo nhân viên"
-                    ESGTrackerType.SAFETY_IMPROVEMENT -> "Cải thiện an toàn"
-                    ESGTrackerType.COMMUNITY_OUTREACH -> "Hỗ trợ cộng đồng"
-                    ESGTrackerType.DIVERSITY_INCLUSION -> "Đa dạng & hòa nhập"
-                    ESGTrackerType.WORK_LIFE_BALANCE -> "Cân bằng công việc"
-                    ESGTrackerType.HEALTH_WELLNESS -> "Sức khỏe & phúc lợi"
-                    ESGTrackerType.EDUCATION_SUPPORT -> "Hỗ trợ giáo dục"
-                    ESGTrackerType.LOCAL_DEVELOPMENT -> "Phát triển địa phương"
-                    ESGTrackerType.POLICY_UPDATE -> "Cập nhật chính sách"
-                    ESGTrackerType.COMPLIANCE_AUDIT -> "Kiểm toán tuân thủ"
-                    ESGTrackerType.RISK_MANAGEMENT -> "Quản lý rủi ro"
-                    ESGTrackerType.TRANSPARENCY_REPORT -> "Báo cáo minh bạch"
-                    ESGTrackerType.STAKEHOLDER_ENGAGEMENT -> "Tương tác bên liên quan"
-                    ESGTrackerType.ETHICS_TRAINING -> "Đào tạo đạo đức"
-                    ESGTrackerType.BOARD_DIVERSITY -> "Đa dạng hội đồng"
-                    ESGTrackerType.SUSTAINABILITY_STRATEGY -> "Chiến lược bền vững"
+                    ESGTrackerType.ENERGY_EFFICIENCY -> "Energy Efficiency"
+                    ESGTrackerType.WASTE_REDUCTION -> "Waste Reduction"
+                    ESGTrackerType.WATER_CONSERVATION -> "Water Conservation"
+                    ESGTrackerType.RENEWABLE_ENERGY -> "Renewable Energy"
+                    ESGTrackerType.CARBON_REDUCTION -> "Carbon Reduction"
+                    ESGTrackerType.POLLUTION_CONTROL -> "Pollution Control"
+                    ESGTrackerType.BIODIVERSITY -> "Biodiversity"
+                    ESGTrackerType.SUSTAINABLE_MATERIALS -> "Sustainable Materials"
+                    ESGTrackerType.EMPLOYEE_TRAINING -> "Employee Training"
+                    ESGTrackerType.SAFETY_IMPROVEMENT -> "Safety Improvement"
+                    ESGTrackerType.COMMUNITY_OUTREACH -> "Community Outreach"
+                    ESGTrackerType.DIVERSITY_INCLUSION -> "Diversity & Inclusion"
+                    ESGTrackerType.WORK_LIFE_BALANCE -> "Work-Life Balance"
+                    ESGTrackerType.HEALTH_WELLNESS -> "Health & Wellness"
+                    ESGTrackerType.EDUCATION_SUPPORT -> "Education Support"
+                    ESGTrackerType.LOCAL_DEVELOPMENT -> "Local Development"
+                    ESGTrackerType.POLICY_UPDATE -> "Policy Update"
+                    ESGTrackerType.COMPLIANCE_AUDIT -> "Compliance Audit"
+                    ESGTrackerType.RISK_MANAGEMENT -> "Risk Management"
+                    ESGTrackerType.TRANSPARENCY_REPORT -> "Transparency Report"
+                    ESGTrackerType.STAKEHOLDER_ENGAGEMENT -> "Stakeholder Engagement"
+                    ESGTrackerType.ETHICS_TRAINING -> "Ethics Training"
+                    ESGTrackerType.BOARD_DIVERSITY -> "Board Diversity"
+                    ESGTrackerType.SUSTAINABILITY_STRATEGY -> "Sustainability Strategy"
                 },
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
@@ -554,7 +554,7 @@ fun ActivityTypeDialogItem(
             if (isSelected) {
                 Icon(
                     Icons.Default.Check,
-                    contentDescription = "Đã chọn",
+                    contentDescription = "Selected",
                     tint = colorResource(id = R.color.interactive_primary)
                 )
             }
@@ -590,9 +590,9 @@ fun PillarSelectionCard(
     modifier: Modifier = Modifier
 ) {
     val (title, color) = when (pillar) {
-        ESGPillar.ENVIRONMENTAL -> "Môi trường" to Color(0xFF4CAF50)
-        ESGPillar.SOCIAL -> "Xã hội" to Color(0xFF2196F3)
-        ESGPillar.GOVERNANCE -> "Quản trị" to Color(0xFF9C27B0)
+        ESGPillar.ENVIRONMENTAL -> "Environmental" to Color(0xFF4CAF50)
+        ESGPillar.SOCIAL -> "Social" to Color(0xFF2196F3)
+        ESGPillar.GOVERNANCE -> "Governance" to Color(0xFF9C27B0)
     }
     
     Surface(
@@ -664,10 +664,10 @@ fun PriorityChip(
     modifier: Modifier = Modifier
 ) {
     val (text, color) = when (priority) {
-        TrackerPriority.LOW -> "Thấp" to Color(0xFF4CAF50)
-        TrackerPriority.MEDIUM -> "Trung bình" to Color(0xFFFF9800)
-        TrackerPriority.HIGH -> "Cao" to Color(0xFFFF5722)
-        TrackerPriority.CRITICAL -> "Khẩn cấp" to Color(0xFFF44336)
+        TrackerPriority.LOW -> "Low" to Color(0xFF4CAF50)
+        TrackerPriority.MEDIUM -> "Medium" to Color(0xFFFF9800)
+        TrackerPriority.HIGH -> "High" to Color(0xFFFF5722)
+        TrackerPriority.CRITICAL -> "Critical" to Color(0xFFF44336)
     }
     
     Surface(
@@ -714,7 +714,7 @@ fun DateSelectionCard(
     OutlinedTextField(
         value = dateFormat.format(Date(selectedDate)),
         onValueChange = { },
-        label = { Text("Ngày dự kiến thực hiện") },
+        label = { Text("Planned Implementation Date") },
         readOnly = true,
         modifier = Modifier
             .fillMaxWidth()
@@ -725,7 +725,7 @@ fun DateSelectionCard(
         trailingIcon = {
             Icon(
                 Icons.Default.CalendarToday,
-                contentDescription = "Chọn ngày",
+                contentDescription = "Select date",
                 tint = colorResource(id = R.color.text_secondary)
             )
         },

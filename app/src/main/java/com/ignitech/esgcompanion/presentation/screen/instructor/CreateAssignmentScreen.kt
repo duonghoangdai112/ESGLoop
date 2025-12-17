@@ -53,8 +53,8 @@ fun CreateAssignmentScreen(
     var showDifficultyDropdown by remember { mutableStateOf(false) }
 
     val classes = listOf("ESG-101", "ESG-102", "ESG-201")
-    val types = listOf("Bài tập cá nhân", "Bài tập nhóm", "Dự án", "Báo cáo", "Thuyết trình")
-    val difficulties = listOf("Dễ", "Trung bình", "Khó", "Rất khó")
+    val types = listOf("Individual Assignment", "Group Assignment", "Project", "Report", "Presentation")
+    val difficulties = listOf("Easy", "Medium", "Hard", "Very Hard")
 
     Column(
         modifier = modifier.fillMaxSize()
@@ -63,14 +63,14 @@ fun CreateAssignmentScreen(
         TopAppBar(
             title = { 
                 Text(
-                    text = "Tạo bài tập",
+                    text = "Create Assignment",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
             },
             navigationIcon = {
                 IconButton(onClick = { navController.popBackStack() }) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Quay lại")
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                 }
             }
         )
@@ -85,7 +85,7 @@ fun CreateAssignmentScreen(
         // Basic Information
         item {
             Text(
-                text = "Thông tin cơ bản",
+                text = "Basic Information",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -96,10 +96,10 @@ fun CreateAssignmentScreen(
             OutlinedTextField(
                 value = assignmentTitle,
                 onValueChange = { assignmentTitle = it },
-                label = { Text("Tiêu đề bài tập") },
+                label = { Text("Assignment Title") },
                 placeholder = { 
                     Text(
-                        "Nhập tiêu đề bài tập",
+                        "Enter assignment title",
                         color = colorResource(id = R.color.text_secondary)
                     ) 
                 },
@@ -115,10 +115,10 @@ fun CreateAssignmentScreen(
             OutlinedTextField(
                 value = assignmentDescription,
                 onValueChange = { assignmentDescription = it },
-                label = { Text("Mô tả bài tập") },
+                label = { Text("Assignment Description") },
                 placeholder = { 
                     Text(
-                        "Mô tả ngắn gọn về yêu cầu bài tập",
+                        "Brief description of assignment requirements",
                         color = colorResource(id = R.color.text_secondary)
                     ) 
                 },
@@ -142,10 +142,10 @@ fun CreateAssignmentScreen(
                     OutlinedTextField(
                         value = selectedClass,
                         onValueChange = { selectedClass = it },
-                        label = { Text("Lớp học") },
+                        label = { Text("Class") },
                         placeholder = { 
                             Text(
-                                "Chọn lớp",
+                                "Select class",
                                 color = colorResource(id = R.color.text_secondary)
                             ) 
                         },
@@ -183,10 +183,10 @@ fun CreateAssignmentScreen(
                     OutlinedTextField(
                         value = selectedType,
                         onValueChange = { selectedType = it },
-                        label = { Text("Loại bài tập") },
+                        label = { Text("Assignment Type") },
                         placeholder = { 
                             Text(
-                                "Chọn loại",
+                                "Select type",
                                 color = colorResource(id = R.color.text_secondary)
                             ) 
                         },
@@ -231,10 +231,10 @@ fun CreateAssignmentScreen(
                     OutlinedTextField(
                         value = selectedDifficulty,
                         onValueChange = { selectedDifficulty = it },
-                        label = { Text("Độ khó") },
+                        label = { Text("Difficulty") },
                         placeholder = { 
                             Text(
-                                "Chọn độ khó",
+                                "Select difficulty",
                                 color = colorResource(id = R.color.text_secondary)
                             ) 
                         },
@@ -271,7 +271,7 @@ fun CreateAssignmentScreen(
                 OutlinedTextField(
                     value = maxScore,
                     onValueChange = { maxScore = it },
-                    label = { Text("Điểm tối đa") },
+                    label = { Text("Max Score") },
                     placeholder = { 
                     Text(
                         "100",
@@ -292,7 +292,7 @@ fun CreateAssignmentScreen(
             OutlinedTextField(
                 value = dueDate,
                 onValueChange = { dueDate = it },
-                label = { Text("Hạn nộp") },
+                label = { Text("Due Date") },
                 placeholder = { 
                     Text(
                         "DD/MM/YYYY",
@@ -310,7 +310,7 @@ fun CreateAssignmentScreen(
         // Assignment Instructions
         item {
             Text(
-                text = "Hướng dẫn chi tiết",
+                text = "Detailed Instructions",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -321,10 +321,10 @@ fun CreateAssignmentScreen(
             OutlinedTextField(
                 value = assignmentInstructions,
                 onValueChange = { assignmentInstructions = it },
-                label = { Text("Hướng dẫn làm bài") },
+                label = { Text("Instructions") },
                 placeholder = { 
                     Text(
-                        "Nhập hướng dẫn chi tiết cho học sinh...",
+                        "Enter detailed instructions for students...",
                         color = colorResource(id = R.color.text_secondary)
                     ) 
                 },
@@ -342,7 +342,7 @@ fun CreateAssignmentScreen(
         // Question Selection
         item {
             Text(
-                text = "Chọn câu hỏi từ thư viện",
+                text = "Select Questions from Library",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -360,7 +360,7 @@ fun CreateAssignmentScreen(
         // Assignment Requirements
         item {
             Text(
-                text = "Yêu cầu bài tập",
+                text = "Assignment Requirements",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -388,7 +388,7 @@ fun CreateAssignmentScreen(
                         color = colorResource(id = R.color.border_card)
                     )
                 ) {
-                    Text("Hủy")
+                    Text("Cancel")
                 }
                 Button(
                     onClick = { /* Save assignment */ },
@@ -397,7 +397,7 @@ fun CreateAssignmentScreen(
                         containerColor = colorResource(id = R.color.interactive_primary)
                     )
                 ) {
-                    Text("Tạo bài tập")
+                    Text("Create Assignment")
                 }
             }
         }
@@ -426,7 +426,7 @@ fun QuestionSelectionSection(
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text(
-                        text = "Câu hỏi đã chọn: ${selectedQuestions.size}",
+                        text = "Selected Questions: ${selectedQuestions.size}",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
@@ -441,7 +441,7 @@ fun QuestionSelectionSection(
                                 },
                                 label = {
                                     Text(
-                                        text = "Câu hỏi $questionId",
+                                        text = "Question $questionId",
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis
                                     )
@@ -449,7 +449,7 @@ fun QuestionSelectionSection(
                                 trailingIcon = {
                                     Icon(
                                         Icons.Default.Close,
-                                        contentDescription = "Xóa",
+                                        contentDescription = "Remove",
                                         modifier = Modifier.size(16.dp)
                                     )
                                 }
@@ -474,7 +474,7 @@ fun QuestionSelectionSection(
         ) {
             Icon(Icons.Default.LibraryBooks, contentDescription = null)
             Spacer(modifier = Modifier.width(8.dp))
-            Text("Chọn câu hỏi từ thư viện")
+            Text("Select Questions from Library")
         }
     }
 }

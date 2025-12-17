@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import com.ignitech.esgcompanion.R
 import com.ignitech.esgcompanion.data.entity.*
 import com.ignitech.esgcompanion.presentation.viewmodel.LearningHubViewModel
@@ -28,6 +29,7 @@ import com.ignitech.esgcompanion.presentation.viewmodel.LearningHubViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LearningHubScreen(
+    navController: NavController? = null,
     modifier: Modifier = Modifier,
     viewModel: LearningHubViewModel = hiltViewModel()
 ) {
@@ -107,10 +109,17 @@ fun LearningHubScreen(
                 }
                 
                 items(uiState.categories) { category ->
+                    val resourceCount = uiState.resources.count { resource ->
+                        resource.category.equals(category.name, ignoreCase = true) && 
+                        resource.userRole == category.userRole
+                    }
                     CategoryCard(
                         category = category,
-                        resourceCount = uiState.resources.count { it.category == category.name },
-                        onClick = { viewModel.selectCategory(category.id) }
+                        resourceCount = resourceCount,
+                        onClick = {
+                            navController?.navigate("learning_hub_category/${category.id}") 
+                                ?: viewModel.selectCategory(category.id)
+                        }
                     )
                 }
                 

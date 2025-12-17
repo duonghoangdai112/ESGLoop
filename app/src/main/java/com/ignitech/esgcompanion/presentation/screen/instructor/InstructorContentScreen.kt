@@ -41,7 +41,7 @@ fun InstructorContentScreen(
         TopAppBar(
             title = { 
                 Text(
-                    text = "Tạo nội dung học tập",
+                    text = "Create Learning Content",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
@@ -50,7 +50,7 @@ fun InstructorContentScreen(
                 IconButton(onClick = { /* Add new content */ }) {
                     Icon(
                         Icons.Default.Add,
-                        contentDescription = "Thêm nội dung",
+                        contentDescription = "Add Content",
                         tint = colorResource(id = R.color.interactive_primary)
                     )
                 }
@@ -67,7 +67,7 @@ fun InstructorContentScreen(
         // Quick Actions
         item {
             Text(
-                text = "Thao tác nhanh",
+                text = "Quick Actions",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -80,14 +80,14 @@ fun InstructorContentScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 ContentActionCard(
-                    title = "Tạo bài giảng",
-                    description = "Soạn thảo bài giảng mới",
+                    title = "Create Lesson",
+                    description = "Create a new lesson",
                     onClick = { navController.navigate("create_lesson") },
                     modifier = Modifier.weight(1f)
                 )
                 ContentActionCard(
-                    title = "Tạo bài tập",
-                    description = "Tạo bài tập cho học sinh",
+                    title = "Create Assignment",
+                    description = "Create assignments for students",
                     onClick = { navController.navigate("create_assignment") },
                     modifier = Modifier.weight(1f)
                 )
@@ -100,14 +100,14 @@ fun InstructorContentScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 ContentActionCard(
-                    title = "Tạo câu hỏi",
-                    description = "Thêm câu hỏi kiểm tra",
+                    title = "Create Question",
+                    description = "Add test questions",
                     onClick = { navController.navigate("create_question") },
                     modifier = Modifier.weight(1f)
                 )
                 ContentActionCard(
-                    title = "Upload tài liệu",
-                    description = "Tải lên tài liệu học tập",
+                    title = "Upload Document",
+                    description = "Upload learning materials",
                     onClick = { /* Upload document */ },
                     modifier = Modifier.weight(1f)
                 )
@@ -117,7 +117,7 @@ fun InstructorContentScreen(
         // Recent Content
         item {
             Text(
-                text = "Nội dung gần đây",
+                text = "Recent Content",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -131,7 +131,7 @@ fun InstructorContentScreen(
         // Content Categories
         item {
             Text(
-                text = "Danh mục nội dung",
+                text = "Content Categories",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -151,7 +151,7 @@ fun InstructorContentScreen(
         // Templates
         item {
             Text(
-                text = "Mẫu nội dung",
+                text = "Content Templates",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -307,7 +307,7 @@ fun CategoryCard(
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "${category.count} mục",
+                text = "${category.count} items",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontWeight = FontWeight.SemiBold
@@ -383,7 +383,7 @@ fun TemplateCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Thời gian: ${template.duration}",
+                    text = "Duration: ${template.duration}",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontWeight = FontWeight.Medium
@@ -396,7 +396,7 @@ fun TemplateCard(
                     shape = RoundedCornerShape(12.dp)
                 ) {
                     Text(
-                        text = "Sử dụng",
+                        text = "Use",
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -433,24 +433,24 @@ data class ContentTemplate(
 private fun getRecentContentData(): List<ContentItem> {
     return listOf(
         ContentItem(
-            title = "Bài giảng: Nguyên tắc ESG cơ bản",
-            description = "Giới thiệu về các nguyên tắc ESG trong doanh nghiệp",
+            title = "Lesson: Basic ESG Principles",
+            description = "Introduction to ESG principles in business",
             className = "ESG-101",
-            date = "2 ngày trước",
+            date = "2 days ago",
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentItem(
-            title = "Bài tập: Phân tích báo cáo bền vững",
-            description = "Học sinh phân tích báo cáo ESG của các công ty",
+            title = "Assignment: Sustainability Report Analysis",
+            description = "Students analyze ESG reports from companies",
             className = "ESG-102",
-            date = "3 ngày trước",
+            date = "3 days ago",
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentItem(
-            title = "Câu hỏi: Quản trị doanh nghiệp",
-            description = "Bộ câu hỏi trắc nghiệm về quản trị",
+            title = "Questions: Corporate Governance",
+            description = "Multiple choice questions about governance",
             className = "ESG-201",
-            date = "1 tuần trước",
+            date = "1 week ago",
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         )
     )
@@ -459,22 +459,22 @@ private fun getRecentContentData(): List<ContentItem> {
 private fun getContentCategoriesData(): List<ContentCategory> {
     return listOf(
         ContentCategory(
-            name = "Bài giảng",
+            name = "Lessons",
             count = 12,
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentCategory(
-            name = "Bài tập",
+            name = "Assignments",
             count = 8,
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentCategory(
-            name = "Câu hỏi",
+            name = "Questions",
             count = 25,
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentCategory(
-            name = "Tài liệu",
+            name = "Documents",
             count = 15,
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         )
@@ -484,24 +484,24 @@ private fun getContentCategoriesData(): List<ContentCategory> {
 private fun getContentTemplatesData(): List<ContentTemplate> {
     return listOf(
         ContentTemplate(
-            name = "Mẫu bài giảng ESG cơ bản",
-            description = "Template chuẩn cho bài giảng về ESG với cấu trúc rõ ràng",
-            difficulty = "Cơ bản",
-            duration = "45 phút",
+            name = "Basic ESG Lesson Template",
+            description = "Standard template for ESG lesson with clear structure",
+            difficulty = "Basic",
+            duration = "45 minutes",
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentTemplate(
-            name = "Mẫu bài tập nhóm",
-            description = "Template cho bài tập nhóm về phân tích ESG",
-            difficulty = "Trung bình",
-            duration = "2 tuần",
+            name = "Group Assignment Template",
+            description = "Template for group assignments on ESG analysis",
+            difficulty = "Intermediate",
+            duration = "2 weeks",
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         ),
         ContentTemplate(
-            name = "Mẫu câu hỏi trắc nghiệm",
-            description = "Bộ câu hỏi mẫu cho kiểm tra kiến thức ESG",
-            difficulty = "Cơ bản",
-            duration = "30 phút",
+            name = "Multiple Choice Questions Template",
+            description = "Sample questions for ESG knowledge test",
+            difficulty = "Basic",
+            duration = "30 minutes",
             color = Color(0xFF2E7D32) // Primary green color (interactive_primary)
         )
     )

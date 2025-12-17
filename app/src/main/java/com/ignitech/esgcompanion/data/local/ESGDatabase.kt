@@ -28,6 +28,9 @@ import com.ignitech.esgcompanion.data.local.entity.UserEntity
 import com.ignitech.esgcompanion.data.local.entity.ESGAssessmentEntity
 import com.ignitech.esgcompanion.data.local.entity.ESGAnswerEntity
 import com.ignitech.esgcompanion.data.local.entity.ESGQuestionEntity
+import com.ignitech.esgcompanion.data.local.entity.QuizAttemptEntity
+import com.ignitech.esgcompanion.data.local.entity.AssessmentFeedbackEntity
+import com.ignitech.esgcompanion.data.local.dao.AssessmentDao
 import com.ignitech.esgcompanion.data.local.converter.DateConverter
 import com.ignitech.esgcompanion.data.local.converter.ListConverter
 import com.ignitech.esgcompanion.data.local.converter.EnumConverter
@@ -62,6 +65,8 @@ import com.ignitech.esgcompanion.data.local.dao.EnterpriseDao
         ESGAssessmentEntity::class,
         ESGAnswerEntity::class,
         ESGQuestionEntity::class,
+        QuizAttemptEntity::class,
+        AssessmentFeedbackEntity::class,
         ESGCategoryEntity::class,
         LearningResourceEntity::class,
         LearningCategoryEntity::class,
@@ -86,7 +91,7 @@ import com.ignitech.esgcompanion.data.local.dao.EnterpriseDao
         StudentEntity::class,
         EnterpriseEntity::class
     ],
-                version = 7,
+    version = 10,
     exportSchema = false
 )
 @TypeConverters(
@@ -114,6 +119,7 @@ abstract class ESGDatabase : RoomDatabase() {
     abstract fun classDao(): ClassDao
     abstract fun studentDao(): StudentDao
     abstract fun enterpriseDao(): EnterpriseDao
+    abstract fun assessmentDao(): AssessmentDao
     
     companion object {
         @Volatile

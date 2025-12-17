@@ -326,8 +326,8 @@ private fun getQuizzesForCategory(category: CategoryQuizCategory): List<Category
         CategoryQuizCategory.SOCIAL -> listOf(
             CategoryQuiz(
                 id = "social_quiz_001",
-                title = "Quyền lao động",
-                description = "Kiến thức về quyền và phúc lợi người lao động",
+                title = "Labor Rights",
+                description = "Knowledge about workers' rights and benefits",
                 category = category,
                 questionCount = 18,
                 timeLimit = 25,
@@ -335,8 +335,8 @@ private fun getQuizzesForCategory(category: CategoryQuizCategory): List<Category
             ),
             CategoryQuiz(
                 id = "social_quiz_002",
-                title = "Đa dạng và hòa nhập",
-                description = "Hiểu biết về tạo môi trường làm việc đa dạng",
+                title = "Diversity and Inclusion",
+                description = "Understanding how to create a diverse work environment",
                 category = category,
                 questionCount = 16,
                 timeLimit = 22
@@ -345,8 +345,8 @@ private fun getQuizzesForCategory(category: CategoryQuizCategory): List<Category
         CategoryQuizCategory.GOVERNANCE -> listOf(
             CategoryQuiz(
                 id = "gov_quiz_001",
-                title = "Quản trị doanh nghiệp",
-                description = "Hiểu biết về cơ cấu quản trị và minh bạch",
+                title = "Corporate Governance",
+                description = "Understanding governance structure and transparency",
                 category = category,
                 questionCount = 22,
                 timeLimit = 35,
@@ -354,8 +354,8 @@ private fun getQuizzesForCategory(category: CategoryQuizCategory): List<Category
             ),
             CategoryQuiz(
                 id = "gov_quiz_002",
-                title = "Đạo đức kinh doanh",
-                description = "Kiến thức về chuẩn mực đạo đức trong kinh doanh",
+                title = "Business Ethics",
+                description = "Knowledge about ethical standards in business",
                 category = category,
                 questionCount = 20,
                 timeLimit = 30
@@ -364,16 +364,16 @@ private fun getQuizzesForCategory(category: CategoryQuizCategory): List<Category
         CategoryQuizCategory.SUSTAINABILITY -> listOf(
             CategoryQuiz(
                 id = "sustain_quiz_001",
-                title = "Phát triển bền vững tổng quan",
-                description = "Kiến thức tổng hợp về phát triển bền vững",
+                title = "Sustainable Development Overview",
+                description = "Comprehensive knowledge about sustainable development",
                 category = category,
                 questionCount = 25,
                 timeLimit = 40
             ),
             CategoryQuiz(
                 id = "sustain_quiz_002",
-                title = "Mục tiêu phát triển bền vững",
-                description = "Hiểu biết về 17 SDGs của Liên Hợp Quốc",
+                title = "Sustainable Development Goals",
+                description = "Understanding the 17 UN SDGs",
                 category = category,
                 questionCount = 30,
                 timeLimit = 45

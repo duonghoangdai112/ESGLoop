@@ -126,7 +126,14 @@ fun ExpertEnterpriseScreen(
                                     enterprise = enterprise,
                                     isConnected = isConnected,
                                     onConnectClick = { viewModel.connectToEnterprise(enterprise.id) },
-                                    onConsultClick = { viewModel.startConsultation(enterprise.id) }
+                                    onConsultClick = { 
+                                        if (isConnected) {
+                                            selectedEnterprise = enterprise
+                                            showConsultDialog = true
+                                        } else {
+                                            viewModel.startConsultation(enterprise.id)
+                                        }
+                                    }
                                 )
                             }
                         }

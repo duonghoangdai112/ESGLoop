@@ -41,8 +41,8 @@ fun CreateLessonScreen(
     var showDifficultyDropdown by remember { mutableStateOf(false) }
 
     val classes = listOf("ESG-101", "ESG-102", "ESG-201")
-    val durations = listOf("30 phút", "45 phút", "60 phút", "90 phút", "120 phút")
-    val difficulties = listOf("Cơ bản", "Trung bình", "Nâng cao")
+    val durations = listOf("30 minutes", "45 minutes", "60 minutes", "90 minutes", "120 minutes")
+    val difficulties = listOf("Basic", "Intermediate", "Advanced")
     val lessonTemplates = getLessonTemplates()
 
     Column(
@@ -52,14 +52,14 @@ fun CreateLessonScreen(
         TopAppBar(
             title = { 
                 Text(
-                    text = "Tạo bài giảng",
+                    text = "Create Lesson",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
             },
             navigationIcon = {
                 IconButton(onClick = { navController.popBackStack() }) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Quay lại")
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                 }
             }
         )
@@ -74,7 +74,7 @@ fun CreateLessonScreen(
         // Basic Information
         item {
             Text(
-                text = "Thông tin cơ bản",
+                text = "Basic Information",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -85,10 +85,10 @@ fun CreateLessonScreen(
             OutlinedTextField(
                 value = lessonTitle,
                 onValueChange = { lessonTitle = it },
-                label = { Text("Tiêu đề bài giảng") },
+                label = { Text("Lesson Title") },
                 placeholder = { 
                     Text(
-                        "Nhập tiêu đề bài giảng",
+                        "Enter lesson title",
                         color = colorResource(id = R.color.text_secondary)
                     ) 
                 },
@@ -104,10 +104,10 @@ fun CreateLessonScreen(
             OutlinedTextField(
                 value = lessonDescription,
                 onValueChange = { lessonDescription = it },
-                label = { Text("Mô tả bài giảng") },
+                label = { Text("Lesson Description") },
                 placeholder = { 
                     Text(
-                        "Mô tả ngắn gọn về nội dung bài giảng",
+                        "Brief description of lesson content",
                         color = colorResource(id = R.color.text_secondary)
                     ) 
                 },
@@ -131,10 +131,10 @@ fun CreateLessonScreen(
                     OutlinedTextField(
                         value = selectedClass,
                         onValueChange = { selectedClass = it },
-                        label = { Text("Lớp học") },
+                        label = { Text("Class") },
                         placeholder = { 
                             Text(
-                                "Chọn lớp",
+                                "Select class",
                                 color = colorResource(id = R.color.text_secondary)
                             ) 
                         },
@@ -172,10 +172,10 @@ fun CreateLessonScreen(
                     OutlinedTextField(
                         value = selectedDuration,
                         onValueChange = { selectedDuration = it },
-                        label = { Text("Thời lượng") },
+                        label = { Text("Duration") },
                         placeholder = { 
                             Text(
-                                "Chọn thời lượng",
+                                "Select duration",
                                 color = colorResource(id = R.color.text_secondary)
                             ) 
                         },
@@ -215,10 +215,10 @@ fun CreateLessonScreen(
                 OutlinedTextField(
                     value = selectedDifficulty,
                     onValueChange = { selectedDifficulty = it },
-                    label = { Text("Độ khó") },
+                    label = { Text("Difficulty") },
                     placeholder = { 
                         Text(
-                            "Chọn độ khó",
+                            "Select difficulty",
                             color = colorResource(id = R.color.text_secondary)
                         ) 
                     },
@@ -255,7 +255,7 @@ fun CreateLessonScreen(
         // Lesson Content
         item {
             Text(
-                text = "Nội dung bài giảng",
+                text = "Lesson Content",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -266,10 +266,10 @@ fun CreateLessonScreen(
             OutlinedTextField(
                 value = lessonContent,
                 onValueChange = { lessonContent = it },
-                label = { Text("Nội dung chi tiết") },
+                label = { Text("Detailed Content") },
                 placeholder = { 
                     Text(
-                        "Nhập nội dung bài giảng chi tiết...",
+                        "Enter detailed lesson content...",
                         color = colorResource(id = R.color.text_secondary)
                     ) 
                 },
@@ -287,7 +287,7 @@ fun CreateLessonScreen(
         // Media Upload
         item {
             Text(
-                text = "Tài liệu đính kèm",
+                text = "Attachments",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -320,14 +320,14 @@ fun CreateLessonScreen(
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = "Kéo thả file hoặc nhấn để chọn",
+                        text = "Drag and drop file or tap to select",
                         style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Center,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "Hỗ trợ: PDF, PPT, DOC, MP4, MP3",
+                        text = "Supported: PDF, PPT, DOC, MP4, MP3",
                         style = MaterialTheme.typography.bodySmall,
                         color = colorResource(id = R.color.text_secondary),
                         textAlign = TextAlign.Center
@@ -339,7 +339,7 @@ fun CreateLessonScreen(
                             containerColor = colorResource(id = R.color.interactive_primary)
                         )
                     ) {
-                        Text("Chọn file")
+                        Text("Select File")
                     }
                 }
             }
@@ -348,7 +348,7 @@ fun CreateLessonScreen(
         // Lesson Templates
         item {
             Text(
-                text = "Mẫu bài giảng",
+                text = "Lesson Templates",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface
@@ -379,7 +379,7 @@ fun CreateLessonScreen(
                         color = colorResource(id = R.color.border_card)
                     )
                 ) {
-                    Text("Hủy")
+                    Text("Cancel")
                 }
                 Button(
                     onClick = { /* Save lesson */ },
@@ -388,7 +388,7 @@ fun CreateLessonScreen(
                         containerColor = colorResource(id = R.color.interactive_primary)
                     )
                 ) {
-                    Text("Lưu bài giảng")
+                    Text("Save Lesson")
                 }
             }
         }
@@ -462,23 +462,23 @@ data class LessonTemplate(
 private fun getLessonTemplates(): List<LessonTemplate> {
     return listOf(
         LessonTemplate(
-            name = "Mẫu bài giảng ESG cơ bản",
-            description = "Cấu trúc chuẩn cho bài giảng ESG",
-            duration = "45 phút",
+            name = "Basic ESG Lesson Template",
+            description = "Standard structure for ESG lesson",
+            duration = "45 minutes",
             icon = Icons.Default.VideoLibrary,
             color = colorResource(id = R.color.interactive_primary)
         ),
         LessonTemplate(
-            name = "Mẫu thuyết trình",
-            description = "Template cho bài thuyết trình",
-            duration = "30 phút",
+            name = "Presentation Template",
+            description = "Template for presentations",
+            duration = "30 minutes",
             icon = Icons.Default.PresentToAll,
             color = colorResource(id = R.color.interactive_primary)
         ),
         LessonTemplate(
-            name = "Mẫu thảo luận nhóm",
-            description = "Template cho hoạt động thảo luận",
-            duration = "60 phút",
+            name = "Group Discussion Template",
+            description = "Template for discussion activities",
+            duration = "60 minutes",
             icon = Icons.Default.Group,
             color = colorResource(id = R.color.interactive_primary)
         )

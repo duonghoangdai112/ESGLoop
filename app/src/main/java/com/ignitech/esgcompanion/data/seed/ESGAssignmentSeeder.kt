@@ -7,48 +7,48 @@ object ESGAssignmentSeeder {
     
     fun getESGAssignments(): List<AssignmentEntity> {
         return listOf(
-            // ===== BÀI TẬP 1: KIỂM TRA GIỮA KỲ (CHUẨN) =====
+            // ===== ASSIGNMENT 1: MIDTERM EXAM (STANDARD) =====
             AssignmentEntity(
                 id = "esg_midterm_1",
-                title = "Kiểm tra giữa kỳ - ESG Fundamentals",
-                description = "Kiểm tra kiến thức cơ bản về ESG với 10 câu trắc nghiệm và 2 câu tự luận",
+                title = "Midterm Exam - ESG Fundamentals",
+                description = "Test basic ESG knowledge with 10 multiple choice questions and 2 essay questions",
                 detailedDescription = "",
                 dueDate = "20/12/2024",
                 status = AssignmentStatus.NOT_STARTED,
                 type = AssignmentType.REPORT,
                 difficulty = AssignmentDifficulty.MEDIUM,
-                estimatedTime = 60, // 60 phút
+                estimatedTime = 60, // 60 minutes
                 maxScore = 20,
                 instructions = listOf(
-                    "Đọc kỹ đề bài trước khi làm",
-                    "Phần trắc nghiệm: Chọn 1 đáp án đúng nhất",
-                    "Phần tự luận: Trình bày rõ ràng, có cấu trúc",
-                    "Kiểm tra lại bài trước khi nộp",
-                    "Nộp bài đúng thời gian quy định"
+                    "Read the questions carefully before answering",
+                    "Multiple choice section: Choose 1 best answer",
+                    "Essay section: Present clearly with structure",
+                    "Review your work before submitting",
+                    "Submit on time"
                 ),
                 requirements = listOf(
-                    "Hoàn thành đầy đủ 10 câu trắc nghiệm",
-                    "Trả lời 2 câu tự luận với độ dài phù hợp",
-                    "Nộp bài trong thời gian 60 phút",
-                    "Không sử dụng tài liệu tham khảo",
-                    "Trình bày rõ ràng, dễ đọc"
+                    "Complete all 10 multiple choice questions",
+                    "Answer 2 essay questions with appropriate length",
+                    "Submit within 60 minutes",
+                    "No reference materials allowed",
+                    "Clear and readable presentation"
                 ),
                 resources = listOf(
                     AssignmentResource(
                         id = "res_midterm_1",
-                        title = "GRI Standards - Hướng dẫn báo cáo bền vững",
+                        title = "GRI Standards - Sustainability Reporting Guide",
                         type = ResourceType.DOCUMENT,
                         url = "https://www.globalreporting.org/standards/"
                     ),
                     AssignmentResource(
                         id = "res_midterm_2",
-                        title = "SASB Standards - Tiêu chuẩn kế toán bền vững",
+                        title = "SASB Standards - Sustainability Accounting Standards",
                         type = ResourceType.DOCUMENT,
                         url = "https://www.sasb.org/standards/"
                     ),
                     AssignmentResource(
                         id = "res_midterm_3",
-                        title = "TCFD Recommendations - Báo cáo rủi ro khí hậu",
+                        title = "TCFD Recommendations - Climate Risk Reporting",
                         type = ResourceType.DOCUMENT,
                         url = "https://www.fsb-tcfd.org/recommendations/"
                     )
@@ -58,31 +58,31 @@ object ESGAssignmentSeeder {
                 updatedAt = Date()
             ),
 
-            // ===== BÀI TẬP 2: THI CUỐI KỲ =====
+            // ===== ASSIGNMENT 2: FINAL EXAM =====
             AssignmentEntity(
                 id = "esg_final_2",
-                title = "Thi Cuối Kỳ: Môn ESG (Environmental – Social – Governance)",
-                description = "Thi cuối kỳ với hình thức tự luận và phân tích tình huống doanh nghiệp",
+                title = "Final Exam: ESG (Environmental – Social – Governance)",
+                description = "Final exam with essay format and business case analysis",
                 detailedDescription = "",
                 dueDate = "15/01/2025",
                 status = AssignmentStatus.NOT_STARTED,
                 type = AssignmentType.REPORT,
                 difficulty = AssignmentDifficulty.HARD,
-                estimatedTime = 90, // 90 phút
+                estimatedTime = 90, // 90 minutes
                 maxScore = 20,
                 instructions = listOf(
-                    "Thời gian làm bài: 90 phút",
-                    "Hình thức: Tự luận + Phân tích tình huống",
-                    "Tổng điểm: 20 điểm",
-                    "Đọc kỹ đề bài trước khi làm",
-                    "Trình bày rõ ràng, có cấu trúc"
+                    "Time limit: 90 minutes",
+                    "Format: Essay + Case analysis",
+                    "Total score: 20 points",
+                    "Read the questions carefully before answering",
+                    "Present clearly with structure"
                 ),
                 requirements = listOf(
-                    "Hoàn thành đầy đủ 3 câu tự luận ngắn (12 điểm)",
-                    "Phân tích case study TechGreen (8 điểm)",
-                    "Nộp bài trong thời gian 90 phút",
-                    "Trình bày rõ ràng, dễ đọc",
-                    "Có ví dụ minh họa cụ thể"
+                    "Complete all 3 short essay questions (12 points)",
+                    "Analyze TechGreen case study (8 points)",
+                    "Submit within 90 minutes",
+                    "Clear and readable presentation",
+                    "Include specific examples"
                 ),
                 resources = listOf(
                     AssignmentResource(
@@ -113,173 +113,173 @@ object ESGAssignmentSeeder {
     
     fun getESGQuestions(): List<QuestionEntity> {
         return listOf(
-            // Câu hỏi cho bài tập 1 (Kiểm tra giữa kỳ)
+            // Questions for Assignment 1 (Midterm Exam)
             QuestionEntity(
                 id = "q1_1",
                 assignmentId = "esg_midterm_1",
-                question = "Yếu tố nào KHÔNG nằm trong bộ tiêu chí ESG?",
+                question = "Which factor is NOT part of ESG criteria?",
                 type = QuestionType.MULTIPLE_CHOICE,
-                options = listOf("Môi trường", "Công nghệ", "Xã hội", "Quản trị"),
-                correctAnswer = "Công nghệ",
-                explanation = "ESG bao gồm 3 trụ cột: Environmental (Môi trường), Social (Xã hội), và Governance (Quản trị). Công nghệ không phải là một trụ cột của ESG."
+                options = listOf("Environmental", "Technology", "Social", "Governance"),
+                correctAnswer = "Technology",
+                explanation = "ESG consists of 3 pillars: Environmental, Social, and Governance. Technology is not an ESG pillar."
             ),
             QuestionEntity(
                 id = "q1_2",
                 assignmentId = "esg_midterm_1",
-                question = "Phát thải Scope 2 bao gồm:",
+                question = "Scope 2 emissions include:",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf(
-                    "Khí thải từ nhà máy do doanh nghiệp trực tiếp vận hành",
-                    "Khí thải từ hoạt động giao hàng",
-                    "Khí thải từ điện tiêu thụ được mua về",
-                    "Khí thải từ khách hàng sử dụng sản phẩm"
+                    "Emissions from factories directly operated by the enterprise",
+                    "Emissions from delivery activities",
+                    "Emissions from purchased electricity consumption",
+                    "Emissions from customers using the product"
                 ),
-                correctAnswer = "Khí thải từ điện tiêu thụ được mua về",
-                explanation = "Scope 2 bao gồm phát thải gián tiếp từ việc mua năng lượng (điện, hơi nước, làm mát) từ nhà cung cấp bên ngoài."
+                correctAnswer = "Emissions from purchased electricity consumption",
+                explanation = "Scope 2 includes indirect emissions from purchased energy (electricity, steam, cooling) from external suppliers."
             ),
             QuestionEntity(
                 id = "q1_3",
                 assignmentId = "esg_midterm_1",
-                question = "Chính sách trả lương công bằng cho nhân viên nằm trong yếu tố nào của ESG?",
+                question = "Fair compensation policy for employees falls under which ESG factor?",
                 type = QuestionType.MULTIPLE_CHOICE,
-                options = listOf("Environmental", "Social", "Governance", "Tất cả đều đúng"),
+                options = listOf("Environmental", "Social", "Governance", "All of the above"),
                 correctAnswer = "Social",
-                explanation = "Chính sách trả lương công bằng thuộc về trụ cột Social (Xã hội) vì liên quan đến quyền lợi và điều kiện làm việc của nhân viên."
+                explanation = "Fair compensation policy belongs to the Social pillar as it relates to employee rights and working conditions."
             ),
             QuestionEntity(
                 id = "q1_4",
                 assignmentId = "esg_midterm_1",
-                question = "Tổ chức nào đã khởi xướng báo cáo ESG đầu tiên trên thế giới?",
+                question = "Which organization initiated the first ESG reporting in the world?",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf("UNDP", "SASB", "GRI", "WEF"),
                 correctAnswer = "GRI",
-                explanation = "GRI (Global Reporting Initiative) được thành lập năm 1997 và là tổ chức đầu tiên phát triển khung báo cáo bền vững toàn cầu."
+                explanation = "GRI (Global Reporting Initiative) was established in 1997 and was the first organization to develop a global sustainability reporting framework."
             ),
             QuestionEntity(
                 id = "q1_5",
                 assignmentId = "esg_midterm_1",
-                question = "ESG được xem là yếu tố:",
+                question = "ESG is considered as a factor that:",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf(
-                    "Bắt buộc theo pháp luật ở mọi quốc gia",
-                    "Chỉ dành cho công ty lớn",
-                    "Hỗ trợ doanh nghiệp phát triển bền vững",
-                    "Không liên quan đến tài chính"
+                    "Is mandatory by law in all countries",
+                    "Is only for large companies",
+                    "Supports sustainable business development",
+                    "Is not related to finance"
                 ),
-                correctAnswer = "Hỗ trợ doanh nghiệp phát triển bền vững",
-                explanation = "ESG là khung đánh giá giúp doanh nghiệp phát triển bền vững, quản lý rủi ro và tạo giá trị dài hạn cho các bên liên quan."
+                correctAnswer = "Supports sustainable business development",
+                explanation = "ESG is an assessment framework that helps businesses develop sustainably, manage risks and create long-term value for stakeholders."
             ),
             QuestionEntity(
                 id = "q1_6",
                 assignmentId = "esg_midterm_1",
-                question = "Ví dụ nào sau đây KHÔNG thuộc yếu tố môi trường (E)?",
+                question = "Which of the following examples does NOT belong to Environmental (E) factor?",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf(
-                    "Giảm phát thải khí CO₂",
-                    "Tái chế rác thải",
-                    "Cân bằng giới tính trong ban lãnh đạo",
-                    "Sử dụng năng lượng tái tạo"
+                    "Reducing CO₂ emissions",
+                    "Waste recycling",
+                    "Gender balance in leadership",
+                    "Using renewable energy"
                 ),
-                correctAnswer = "Cân bằng giới tính trong ban lãnh đạo",
-                explanation = "Cân bằng giới tính trong ban lãnh đạo thuộc về trụ cột Social (Xã hội), không phải Environmental (Môi trường)."
+                correctAnswer = "Gender balance in leadership",
+                explanation = "Gender balance in leadership belongs to the Social pillar, not Environmental."
             ),
             QuestionEntity(
                 id = "q1_7",
                 assignmentId = "esg_midterm_1",
-                question = "Trong ESG, \"governance\" KHÔNG bao gồm yếu tố nào sau đây:",
+                question = "In ESG, \"governance\" does NOT include which of the following factors:",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf(
-                    "Kiểm toán nội bộ",
-                    "Hội đồng quản trị",
-                    "Chiến dịch bảo vệ môi trường",
-                    "Công khai báo cáo tài chính"
+                    "Internal audit",
+                    "Board of directors",
+                    "Environmental protection campaign",
+                    "Financial reporting transparency"
                 ),
-                correctAnswer = "Chiến dịch bảo vệ môi trường",
-                explanation = "Chiến dịch bảo vệ môi trường thuộc về trụ cột Environmental (Môi trường), không phải Governance (Quản trị)."
+                correctAnswer = "Environmental protection campaign",
+                explanation = "Environmental protection campaign belongs to the Environmental pillar, not Governance."
             ),
             QuestionEntity(
                 id = "q1_8",
                 assignmentId = "esg_midterm_1",
-                question = "Công ty bị phạt vì che giấu dữ liệu khí thải sẽ bị đánh giá thấp ở yếu tố nào?",
+                question = "A company penalized for hiding emission data will be rated low in which factor?",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf("Social", "Governance", "Environmental", "CSR"),
                 correctAnswer = "Governance",
-                explanation = "Che giấu dữ liệu vi phạm nguyên tắc minh bạch và trung thực trong quản trị doanh nghiệp, thuộc về trụ cột Governance."
+                explanation = "Hiding data violates transparency and honesty principles in corporate governance, belonging to the Governance pillar."
             ),
             QuestionEntity(
                 id = "q1_9",
                 assignmentId = "esg_midterm_1",
-                question = "KPI ESG nào sau đây là phù hợp với yếu tố xã hội (S)?",
+                question = "Which of the following ESG KPIs is appropriate for Social (S) factor?",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf(
-                    "Lượng nước tiêu thụ",
-                    "Tỷ lệ nhân viên nghỉ việc",
-                    "Số lượng cổ đông lớn",
-                    "Mức độ tiêu thụ điện"
+                    "Water consumption",
+                    "Employee turnover rate",
+                    "Number of major shareholders",
+                    "Electricity consumption level"
                 ),
-                correctAnswer = "Tỷ lệ nhân viên nghỉ việc",
-                explanation = "Tỷ lệ nhân viên nghỉ việc (turnover rate) là chỉ số quan trọng trong trụ cột Social, phản ánh mức độ hài lòng và gắn bó của nhân viên."
+                correctAnswer = "Employee turnover rate",
+                explanation = "Employee turnover rate is an important indicator in the Social pillar, reflecting employee satisfaction and engagement."
             ),
             QuestionEntity(
                 id = "q1_10",
                 assignmentId = "esg_midterm_1",
-                question = "\"Greenwashing\" là gì?",
+                question = "What is \"Greenwashing\"?",
                 type = QuestionType.MULTIPLE_CHOICE,
                 options = listOf(
-                    "Một công nghệ làm sạch môi trường",
-                    "Một kỹ thuật truyền thông tích cực",
-                    "Việc giả tạo thể hiện ESG để đánh bóng hình ảnh",
-                    "Quá trình xanh hóa toàn diện doanh nghiệp"
+                    "An environmental cleaning technology",
+                    "A positive communication technique",
+                    "False ESG representation to polish image",
+                    "Comprehensive business greening process"
                 ),
-                correctAnswer = "Việc giả tạo thể hiện ESG để đánh bóng hình ảnh",
-                explanation = "Greenwashing là hành vi tạo ra ấn tượng sai lệch về cam kết môi trường hoặc ESG của doanh nghiệp để đánh bóng hình ảnh mà không có hành động thực tế."
+                correctAnswer = "False ESG representation to polish image",
+                explanation = "Greenwashing is the practice of creating misleading impressions about a company's environmental or ESG commitments to polish its image without real actions."
             ),
 
-            // Câu hỏi cho bài tập 2 (Thi cuối kỳ)
+            // Questions for Assignment 2 (Final Exam)
             QuestionEntity(
                 id = "q2_1",
                 assignmentId = "esg_final_2",
-                question = "Trình bày mối quan hệ giữa ESG và Mục tiêu Phát triển Bền vững (SDGs). ESG và SDGs có gì giống và khác nhau? Làm rõ vai trò của ESG trong việc đạt được các mục tiêu SDGs do Liên Hợp Quốc đề ra. Nêu 2 ví dụ cụ thể về mục tiêu SDG nào có thể liên quan trực tiếp tới từng yếu tố E, S hoặc G.",
+                question = "Explain the relationship between ESG and Sustainable Development Goals (SDGs). What are the similarities and differences between ESG and SDGs? Clarify the role of ESG in achieving the SDGs set by the United Nations. Provide 2 specific examples of SDG goals that can be directly related to each E, S or G factor.",
                 type = QuestionType.ESSAY,
                 options = null,
                 correctAnswer = null,
-                explanation = "Câu hỏi tự luận về mối quan hệ giữa ESG và SDGs, yêu cầu phân tích sâu và đưa ra ví dụ cụ thể."
+                explanation = "Essay question about the relationship between ESG and SDGs, requiring in-depth analysis and specific examples."
             ),
             QuestionEntity(
                 id = "q2_2",
                 assignmentId = "esg_final_2",
-                question = "Nêu và phân tích 3 rủi ro chính mà doanh nghiệp có thể gặp phải nếu không triển khai ESG đúng cách: Rủi ro về pháp lý, Rủi ro về tài chính/đầu tư, Rủi ro về uy tín/thương hiệu. Có thể dẫn chứng bằng 1-2 ví dụ thực tế nếu cần.",
+                question = "Identify and analyze 3 main risks that enterprises may face if ESG is not properly implemented: Legal risk, Financial/investment risk, Reputation/brand risk. You may cite 1-2 real examples if needed.",
                 type = QuestionType.ESSAY,
                 options = null,
                 correctAnswer = null,
-                explanation = "Câu hỏi tự luận về rủi ro ESG, yêu cầu phân tích và đưa ra ví dụ thực tế."
+                explanation = "Essay question about ESG risks, requiring analysis and real examples."
             ),
             QuestionEntity(
                 id = "q2_3",
                 assignmentId = "esg_final_2",
-                question = "So sánh ESG và CSR (Corporate Social Responsibility). Điểm giống nhau giữa ESG và CSR là gì? Điểm khác biệt lớn nhất giữa ESG và CSR nằm ở đâu (mục tiêu, cách triển khai, đo lường, độ gắn kết chiến lược)? Cho ví dụ minh họa một hoạt động CSR truyền thống và một hoạt động ESG có tính chiến lược.",
+                question = "Compare ESG and CSR (Corporate Social Responsibility). What are the similarities between ESG and CSR? Where are the biggest differences between ESG and CSR (objectives, implementation, measurement, strategic alignment)? Provide examples of a traditional CSR activity and a strategic ESG activity.",
                 type = QuestionType.ESSAY,
                 options = null,
                 correctAnswer = null,
-                explanation = "Câu hỏi tự luận so sánh ESG và CSR, yêu cầu phân tích và đưa ra ví dụ minh họa."
+                explanation = "Essay question comparing ESG and CSR, requiring analysis and illustrative examples."
             ),
             QuestionEntity(
                 id = "q2_4",
                 assignmentId = "esg_final_2",
-                question = "Case Study TechGreen: Công ty TechGreen là startup công nghệ giáo dục gặp 3 vấn đề: (1) Tỷ lệ nghỉ việc cao, nhân viên làm việc quá tải, (2) Chưa công bố chính sách bảo mật dữ liệu, (3) Tiêu thụ nhiều điện năng từ lưới truyền thống. Phân loại từng vấn đề vào 3 yếu tố ESG và phân tích hậu quả nếu tiếp tục bỏ qua.",
+                question = "Case Study TechGreen: TechGreen is an education technology startup facing 3 issues: (1) High turnover rate, employees overworked, (2) No published data privacy policy, (3) High electricity consumption from traditional grid. Classify each issue into the 3 ESG factors and analyze consequences if ignored.",
                 type = QuestionType.ESSAY,
                 options = null,
                 correctAnswer = null,
-                explanation = "Case study phân tích tình huống doanh nghiệp TechGreen, yêu cầu phân loại vấn đề theo ESG và đánh giá hậu quả."
+                explanation = "Case study analyzing TechGreen business situation, requiring ESG classification of issues and consequence assessment."
             ),
             QuestionEntity(
                 id = "q2_5",
                 assignmentId = "esg_final_2",
-                question = "Đề xuất kế hoạch hành động ESG trong 6 tháng tới cho TechGreen, bao gồm: Mỗi vấn đề đưa ra 1 hành động cụ thể, Xác định bộ phận chịu trách nhiệm và Nêu KPI đo lường kết quả (ví dụ: mức giảm tiêu thụ điện, mức độ hài lòng nhân viên, số người được đào tạo về bảo mật…).",
+                question = "Propose a 6-month ESG action plan for TechGreen, including: 1 specific action for each issue, Identify responsible department and State KPIs to measure results (e.g., electricity consumption reduction, employee satisfaction level, number of people trained on security…).",
                 type = QuestionType.ESSAY,
                 options = null,
                 correctAnswer = null,
-                explanation = "Câu hỏi tự luận về kế hoạch hành động ESG, yêu cầu đề xuất cụ thể với KPI đo lường."
+                explanation = "Essay question about ESG action plan, requiring specific proposals with measurable KPIs."
             )
         )
     }

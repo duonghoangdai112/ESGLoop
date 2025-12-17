@@ -56,6 +56,9 @@ interface ESGAssessmentDao {
     @Query("SELECT * FROM esg_assessments WHERE userId = :userId AND pillar = :pillar AND isHistorical = :isHistorical ORDER BY assessmentYear DESC, assessmentQuarter DESC")
     fun getHistoricalAssessmentsByPillar(userId: String, pillar: ESGPillar, isHistorical: Boolean): Flow<List<ESGAssessmentEntity>>
     
+    @Query("SELECT * FROM esg_assessments WHERE userId = :userId AND pillar = :pillar AND assessmentPeriod = :period LIMIT 1")
+    suspend fun getAssessmentByUserPillarAndPeriod(userId: String, pillar: ESGPillar, period: String): ESGAssessmentEntity?
+    
     @Query("SELECT * FROM esg_assessments WHERE id = :assessmentId")
     suspend fun getAssessmentById(assessmentId: String): ESGAssessmentEntity?
     

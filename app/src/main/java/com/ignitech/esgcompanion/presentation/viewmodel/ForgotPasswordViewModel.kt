@@ -49,7 +49,7 @@ class ForgotPasswordViewModel @Inject constructor() : ViewModel() {
             
             _uiState.value = _uiState.value.copy(
                 isLoading = false,
-                success = "Hướng dẫn đặt lại mật khẩu đã được gửi đến email của bạn"
+                success = "Password reset instructions have been sent to your email"
             )
         }
     }

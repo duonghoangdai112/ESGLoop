@@ -55,7 +55,7 @@ class AddActivityViewModel @Inject constructor(
         _uiState.update { 
             it.copy(
                 title = title,
-                titleError = if (title.isBlank()) "Tiêu đề không được để trống" else ""
+                titleError = if (title.isBlank()) "Title cannot be empty" else ""
             )
         }
         validateForm()
@@ -65,7 +65,7 @@ class AddActivityViewModel @Inject constructor(
         _uiState.update { 
             it.copy(
                 description = description,
-                descriptionError = if (description.isBlank()) "Mô tả không được để trống" else ""
+                descriptionError = if (description.isBlank()) "Description cannot be empty" else ""
             )
         }
         validateForm()
@@ -108,7 +108,7 @@ class AddActivityViewModel @Inject constructor(
     
     fun updateBudget(budget: String) {
         val budgetError = if (budget.isNotEmpty() && !budget.matches(Regex("\\d+"))) {
-            "Ngân sách phải là số"
+            "Budget must be a number"
         } else ""
         
         _uiState.update { 
@@ -170,7 +170,7 @@ class AddActivityViewModel @Inject constructor(
                 _uiState.update { 
                     it.copy(
                         isLoading = false,
-                        error = e.message ?: "Có lỗi xảy ra khi lưu hoạt động"
+                        error = e.message ?: "An error occurred while saving the activity"
                     )
                 }
             }

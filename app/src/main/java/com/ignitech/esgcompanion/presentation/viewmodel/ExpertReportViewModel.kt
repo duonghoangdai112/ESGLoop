@@ -51,7 +51,7 @@ class ExpertReportViewModel @Inject constructor(
                 _uiState.update { 
                     it.copy(
                         isLoading = false,
-                        error = e.message ?: "Có lỗi xảy ra khi tải dữ liệu"
+                        error = e.message ?: "Error loading data"
                     )
                 }
             }

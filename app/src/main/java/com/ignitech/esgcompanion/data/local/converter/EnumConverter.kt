@@ -94,13 +94,13 @@ class EnumConverter {
     }
     
     @TypeConverter
-    fun fromQuizQuestionType(type: QuizQuestionType): String {
-        return type.name
+    fun fromQuizQuestionType(type: QuizQuestionType?): String? {
+        return type?.name
     }
     
     @TypeConverter
-    fun toQuizQuestionType(type: String): QuizQuestionType {
-        return QuizQuestionType.valueOf(type)
+    fun toQuizQuestionType(type: String?): QuizQuestionType? {
+        return type?.let { QuizQuestionType.valueOf(it) }
     }
     
     @TypeConverter

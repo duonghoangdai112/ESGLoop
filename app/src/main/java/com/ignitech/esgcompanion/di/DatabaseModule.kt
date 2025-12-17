@@ -20,6 +20,7 @@ import com.ignitech.esgcompanion.data.local.dao.EnterpriseExpertConnectionDao
 import com.ignitech.esgcompanion.data.local.dao.ClassDao
 import com.ignitech.esgcompanion.data.local.dao.StudentDao
 import com.ignitech.esgcompanion.data.local.dao.EnterpriseDao
+import com.ignitech.esgcompanion.data.local.dao.AssessmentDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +39,9 @@ object DatabaseModule {
             context.applicationContext,
             ESGDatabase::class.java,
             "esg_database"
-        ).build()
+        )
+        .fallbackToDestructiveMigration() // Temporary for development
+        .build()
     }
     
     @Provides
@@ -131,5 +134,10 @@ object DatabaseModule {
     @Provides
     fun provideEnterpriseDao(database: ESGDatabase): EnterpriseDao {
         return database.enterpriseDao()
+    }
+    
+    @Provides
+    fun provideAssessmentDao(database: ESGDatabase): AssessmentDao {
+        return database.assessmentDao()
     }
 }

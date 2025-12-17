@@ -109,7 +109,7 @@ class AssignmentWorkViewModel @Inject constructor(
             try {
                 val assignment = _assignment.value
                 if (assignment == null) {
-                    _saveResult.value = "Không tìm thấy thông tin bài tập"
+                    _saveResult.value = "Assignment information not found"
                     return@launch
                 }
                 
@@ -143,7 +143,7 @@ class AssignmentWorkViewModel @Inject constructor(
                 assignmentSubmissionDao.insertSubmission(submission)
                 questionAttemptDao.insertAttempts(questionAttempts)
                 
-                _saveResult.value = "Lưu bài tập thành công!"
+                _saveResult.value = "Assignment saved successfully!"
                 
             } catch (e: Exception) {
                 e.printStackTrace()

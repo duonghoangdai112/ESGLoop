@@ -666,14 +666,14 @@ fun ConsultationOptionsDialog(
                 ConsultationOptionItem(
                     icon = Icons.Default.Schedule,
                     title = "Schedule Appointment",
-                    description = "Sắp xếp cuộc họp trực tiếp hoặc online",
+                    description = "Schedule an in-person or online meeting",
                     onClick = onScheduleMeeting
                 )
                 
                 ConsultationOptionItem(
                     icon = Icons.Default.Message,
-                    title = "Gửi tin nhắn",
-                    description = "Gửi câu hỏi qua tin nhắn",
+                    title = "Send Message",
+                    description = "Send questions via message",
                     onClick = onSendMessage
                 )
             }
@@ -685,7 +685,7 @@ fun ConsultationOptionsDialog(
                     contentColor = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             ) {
-                Text("Hủy")
+                Text("Cancel")
             }
         }
     )
@@ -765,7 +765,7 @@ fun ConnectionConfirmationDialog(
         containerColor = Color.White,
         title = {
             Text(
-                text = "Xác nhận kết nối",
+                text = "Confirm Connection",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
@@ -855,7 +855,7 @@ fun ConnectionConfirmationDialog(
                 
                 // Connection Info
                 Text(
-                    text = "Bạn sẽ gửi yêu cầu kết nối tới chuyên gia này. Sau khi chuyên gia chấp nhận, bạn có thể:",
+                    text = "You will send a connection request to this expert. After the expert accepts, you can:",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -889,7 +889,7 @@ fun ConnectionConfirmationDialog(
                             modifier = Modifier.size(20.dp)
                         )
                         Text(
-                            text = "Chuyên gia sẽ có quyền truy cập vào dữ liệu ESG của doanh nghiệp để đưa ra tư vấn chính xác",
+                            text = "The expert will have access to your enterprise's ESG data to provide accurate consultation",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurface,
                             lineHeight = 16.sp
@@ -902,23 +902,23 @@ fun ConnectionConfirmationDialog(
                 ) {
                     ConnectionBenefitItem(
                         icon = Icons.Default.Phone,
-                        text = "Gọi điện tư vấn trực tiếp"
+                        text = "Call for direct consultation"
                     )
                     ConnectionBenefitItem(
                         icon = Icons.Default.Schedule,
-                        text = "Đặt lịch hẹn tư vấn"
+                        text = "Schedule consultation appointment"
                     )
                     ConnectionBenefitItem(
                         icon = Icons.Default.Message,
-                        text = "Gửi tin nhắn trao đổi"
+                        text = "Send messages for discussion"
                     )
                     ConnectionBenefitItem(
                         icon = Icons.Default.Assignment,
-                        text = "Nhận tư vấn chuyên sâu về ESG"
+                        text = "Receive in-depth ESG consultation"
                     )
                     ConnectionBenefitItem(
                         icon = Icons.Default.Analytics,
-                        text = "Chuyên gia có thể xem dữ liệu ESG để phân tích và đưa ra khuyến nghị"
+                        text = "Expert can view ESG data to analyze and provide recommendations"
                     )
                 }
             }
@@ -932,7 +932,7 @@ fun ConnectionConfirmationDialog(
                 shape = RoundedCornerShape(8.dp)
             ) {
                 Text(
-                    text = "Kết nối",
+                    text = "Connect",
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.White
                 )
@@ -945,7 +945,7 @@ fun ConnectionConfirmationDialog(
                     contentColor = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             ) {
-                Text("Hủy")
+                Text("Cancel")
             }
         }
     )

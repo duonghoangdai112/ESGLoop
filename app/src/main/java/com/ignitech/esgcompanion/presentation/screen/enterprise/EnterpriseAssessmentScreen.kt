@@ -26,12 +26,15 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.colorResource
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ignitech.esgcompanion.domain.entity.*
 import com.ignitech.esgcompanion.ui.theme.*
 import com.ignitech.esgcompanion.R
 import com.ignitech.esgcompanion.utils.AppColors
 import com.ignitech.esgcompanion.utils.AppColorsData
 import com.ignitech.esgcompanion.data.local.entity.ESGAssessmentEntity
+import com.ignitech.esgcompanion.presentation.viewmodel.EnterpriseAssessmentViewModel
 
 private data class StatusData(
     val text: String,
@@ -44,9 +47,11 @@ private data class StatusData(
 @Composable
 fun EnterpriseAssessmentScreen(
     navController: NavController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: EnterpriseAssessmentViewModel = hiltViewModel()
 ) {
     val colors = AppColors()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var selectedPillar by remember { mutableStateOf<ESGPillar?>(ESGPillar.ENVIRONMENTAL) }
     
     Column(
@@ -79,20 +84,51 @@ fun EnterpriseAssessmentScreen(
         )
         
         // Content
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            // Assessment Period Info
-            item {
-                Text(
-                    text = "Q3 2025 Assessment",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
+        if (uiState.isLoading) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(
+                    color = colorResource(id = R.color.interactive_primary)
                 )
             }
+        } else if (uiState.error != null) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Text(
+                        text = uiState.error ?: "An error occurred",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                    Button(onClick = { viewModel.refresh() }) {
+                        Text("Retry")
+                    }
+                }
+            }
+        } else {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // Assessment Period Info
+                item {
+                    Text(
+                        text = "${uiState.currentPeriod} Assessment",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             
             item {
                 PillarTabRow(
@@ -235,26 +271,24 @@ fun EnterpriseAssessmentScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     
-                    val overallProgress = getOverallProgress()
                     CustomCircularProgressIndicator(
-                        progress = overallProgress,
+                        progress = uiState.overallProgress,
                         color = colorResource(id = R.color.interactive_primary)
                     )
                     
                     Spacer(modifier = Modifier.height(24.dp))
                     
                     // Progress Details
-                    ProgressDetailsSection()
+                    ProgressDetailsSection(uiState = uiState)
                 }
+            }
             }
         }
     }
 }
 
 @Composable
-fun ProgressDetailsSection() {
-    val progressStats = getProgressStats()
-    
+fun ProgressDetailsSection(uiState: com.ignitech.esgcompanion.presentation.viewmodel.EnterpriseAssessmentUiState) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -266,17 +300,17 @@ fun ProgressDetailsSection() {
         ) {
             ProgressStatItem(
                 title = "Completed",
-                value = "${progressStats.completedAssessments}",
+                value = "${uiState.completedAssessments}",
                 subtitle = "assessments"
             )
             ProgressStatItem(
                 title = "In Progress",
-                value = "${progressStats.inProgressAssessments}",
+                value = "${uiState.inProgressAssessments}",
                 subtitle = "assessments"
             )
             ProgressStatItem(
                 title = "Average Score",
-                value = "${progressStats.averageScore}",
+                value = "${uiState.averageScore}",
                 subtitle = "points"
             )
         }
@@ -299,18 +333,18 @@ fun ProgressDetailsSection() {
         ) {
             PillarProgressItem(
                 pillar = ESGPillar.ENVIRONMENTAL,
-                progress = progressStats.environmentalProgress,
-                score = progressStats.environmentalScore
+                progress = uiState.environmentalProgress,
+                score = uiState.environmentalScore
             )
             PillarProgressItem(
                 pillar = ESGPillar.SOCIAL,
-                progress = progressStats.socialProgress,
-                score = progressStats.socialScore
+                progress = uiState.socialProgress,
+                score = uiState.socialScore
             )
             PillarProgressItem(
                 pillar = ESGPillar.GOVERNANCE,
-                progress = progressStats.governanceProgress,
-                score = progressStats.governanceScore
+                progress = uiState.governanceProgress,
+                score = uiState.governanceScore
             )
         }
     }
@@ -810,35 +844,6 @@ private fun getAssessmentsForPillar(pillar: ESGPillar): List<ESGAssessment> {
     }
 }
 
-private fun getOverallProgress(): Float {
-    return 0.6f // 60% completed
-}
-
-data class ProgressStats(
-    val completedAssessments: Int,
-    val inProgressAssessments: Int,
-    val averageScore: Int,
-    val environmentalProgress: Float,
-    val environmentalScore: Int,
-    val socialProgress: Float,
-    val socialScore: Int,
-    val governanceProgress: Float,
-    val governanceScore: Int
-)
-
-private fun getProgressStats(): ProgressStats {
-    return ProgressStats(
-        completedAssessments = 3,
-        inProgressAssessments = 2,
-        averageScore = 78,
-        environmentalProgress = 0.8f,
-        environmentalScore = 85,
-        socialProgress = 0.4f,
-        socialScore = 65,
-        governanceProgress = 0.6f,
-        governanceScore = 72
-    )
-}
 
 private fun getPillarName(pillar: ESGPillar): String {
     return when (pillar) {

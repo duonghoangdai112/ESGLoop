@@ -59,7 +59,7 @@ class CreateQuestionViewModel @Inject constructor(
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    error = e.message ?: "Có lỗi xảy ra khi tạo câu hỏi"
+                    error = e.message ?: "Error creating question"
                 )
             }
         }

@@ -28,22 +28,18 @@ class LearningHubViewModel @Inject constructor(
             println("DEBUG: LearningHub - Starting to load...")
             _uiState.value = _uiState.value.copy(isLoading = true)
             
-            // Get current user role (with proper flow handling)
-            var userRole = UserRole.ENTERPRISE
-            try {
-                authRepository.getCurrentUser().collect { result ->
-                    when (result) {
-                        is com.ignitech.esgcompanion.common.Result.Success -> {
-                            userRole = result.data?.role ?: UserRole.ENTERPRISE
-                        }
-                        else -> {
-                            userRole = UserRole.ENTERPRISE
-                        }
+            // Get current user role
+            val userRole = try {
+                val result = authRepository.getCurrentUser().first()
+                when (result) {
+                    is com.ignitech.esgcompanion.common.Result.Success -> {
+                        result.data?.role ?: UserRole.ENTERPRISE
                     }
+                    else -> UserRole.ENTERPRISE
                 }
             } catch (e: Exception) {
                 println("DEBUG: LearningHub - Error getting user role: ${e.message}")
-                userRole = UserRole.ENTERPRISE
+                UserRole.ENTERPRISE
             }
             
             println("DEBUG: LearningHub - Detected userRole: $userRole")
@@ -51,21 +47,31 @@ class LearningHubViewModel @Inject constructor(
             // Update selected role
             _uiState.value = _uiState.value.copy(selectedRole = userRole)
             
-            // Use mock data instead of database
-            val categories = getMockCategories(userRole)
-            val resources = getMockResources(userRole)
-            val featuredResources = resources.filter { it.isFeatured }
-            
-            println("DEBUG: LearningHub - categories: ${categories.size}")
-            println("DEBUG: LearningHub - resources: ${resources.size}")
-            println("DEBUG: LearningHub - featuredResources: ${featuredResources.size}")
-            
-            _uiState.value = _uiState.value.copy(
-                isLoading = false,
-                categories = categories,
-                resources = resources,
-                featuredResources = featuredResources
-            )
+            try {
+                // Load data from database
+                val categories = repository.getLearningCategoriesByUserRole(userRole)
+                val resources = repository.getLearningResourcesByUserRole(userRole)
+                val featuredResources = repository.getFeaturedResources(userRole)
+                
+                println("DEBUG: LearningHub - categories: ${categories.size}")
+                println("DEBUG: LearningHub - resources: ${resources.size}")
+                println("DEBUG: LearningHub - featuredResources: ${featuredResources.size}")
+                
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    categories = categories,
+                    resources = resources,
+                    featuredResources = featuredResources,
+                    error = null
+                )
+            } catch (e: Exception) {
+                println("DEBUG: LearningHub - Error loading data: ${e.message}")
+                e.printStackTrace()
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    error = e.message ?: "Error loading learning hub data"
+                )
+            }
         }
     }
     

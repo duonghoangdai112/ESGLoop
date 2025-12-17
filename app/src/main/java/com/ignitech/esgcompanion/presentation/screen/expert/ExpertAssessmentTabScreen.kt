@@ -513,10 +513,10 @@ fun AchievementCard(
 @Composable
 fun DifficultyChip(difficulty: QuizDifficulty) {
     val (text, color) = when (difficulty) {
-        QuizDifficulty.EASY -> "Dễ" to Color(0xFF4CAF50)
-        QuizDifficulty.MEDIUM -> "Trung bình" to Color(0xFFFF9800)
-        QuizDifficulty.HARD -> "Khó" to Color(0xFFFF5722)
-        QuizDifficulty.EXPERT -> "Chuyên gia" to Color(0xFF9C27B0)
+        QuizDifficulty.EASY -> "Easy" to Color(0xFF4CAF50)
+        QuizDifficulty.MEDIUM -> "Medium" to Color(0xFFFF9800)
+        QuizDifficulty.HARD -> "Hard" to Color(0xFFFF5722)
+        QuizDifficulty.EXPERT -> "Expert" to Color(0xFF9C27B0)
     }
     
     Surface(

@@ -206,7 +206,7 @@ fun StatisticsSection(
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        // Row 1: Tổng hoạt động + Hoàn thành
+        // Row 1: Total Activities + Completed
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -230,7 +230,7 @@ fun StatisticsSection(
             )
         }
         
-        // Row 2: Quá hạn + KPI
+        // Row 2: Overdue + KPI
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -438,9 +438,9 @@ fun ActivityCard(
                     ) {
                         Text(
                             text = when (activity.pillar) {
-                                ESGPillar.ENVIRONMENTAL -> "Môi trường"
-                                ESGPillar.SOCIAL -> "Xã hội"
-                                ESGPillar.GOVERNANCE -> "Quản trị"
+                                ESGPillar.ENVIRONMENTAL -> "Environmental"
+                                ESGPillar.SOCIAL -> "Social"
+                                ESGPillar.GOVERNANCE -> "Governance"
                             },
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                             style = MaterialTheme.typography.bodyMedium,
@@ -478,7 +478,7 @@ fun ActivityCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Ngày dự kiến: ${dateFormat.format(Date(activity.plannedDate))}",
+                        text = "Planned date: ${dateFormat.format(Date(activity.plannedDate))}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Medium
@@ -496,7 +496,7 @@ fun ActivityCard(
                     ) {
                         if (!activity.department.isNullOrEmpty()) {
                             Text(
-                                text = "Phòng ban: ${activity.department}",
+                                text = "Department: ${activity.department}",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -504,7 +504,7 @@ fun ActivityCard(
                         
                         if (!activity.location.isNullOrEmpty()) {
                             Text(
-                                text = "Địa điểm: ${activity.location}",
+                                text = "Location: ${activity.location}",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -528,7 +528,7 @@ fun ActivityCard(
                         shape = RoundedCornerShape(12.dp)
                     ) {
                         Text(
-                            text = "Hoàn thành",
+                            text = "Complete",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -543,7 +543,7 @@ fun ActivityCard(
                         )
                     ) {
                         Text(
-                            text = "Tạm dừng",
+                            text = "On Hold",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -557,12 +557,12 @@ fun ActivityCard(
 @Composable
 fun StatusChip(status: TrackerStatus) {
     val (text, color) = when (status) {
-        TrackerStatus.PLANNED -> "Đã lên kế hoạch" to Color(0xFF2196F3)
-        TrackerStatus.IN_PROGRESS -> "Đang thực hiện" to Color(0xFFFF9800)
-        TrackerStatus.COMPLETED -> "Đã hoàn thành" to Color(0xFF4CAF50)
-        TrackerStatus.CANCELLED -> "Đã hủy" to Color(0xFFF44336)
-        TrackerStatus.ON_HOLD -> "Tạm dừng" to Color(0xFF9E9E9E)
-        TrackerStatus.OVERDUE -> "Quá hạn" to Color(0xFFFF5722)
+        TrackerStatus.PLANNED -> "Planned" to Color(0xFF2196F3)
+        TrackerStatus.IN_PROGRESS -> "In Progress" to Color(0xFFFF9800)
+        TrackerStatus.COMPLETED -> "Completed" to Color(0xFF4CAF50)
+        TrackerStatus.CANCELLED -> "Cancelled" to Color(0xFFF44336)
+        TrackerStatus.ON_HOLD -> "On Hold" to Color(0xFF9E9E9E)
+        TrackerStatus.OVERDUE -> "Overdue" to Color(0xFFFF5722)
     }
     
     Surface(
@@ -587,10 +587,10 @@ fun StatusChip(status: TrackerStatus) {
 @Composable
 fun PriorityChip(priority: TrackerPriority) {
     val (text, color) = when (priority) {
-        TrackerPriority.LOW -> "Thấp" to Color(0xFF4CAF50)
-        TrackerPriority.MEDIUM -> "Trung bình" to Color(0xFFFF9800)
-        TrackerPriority.HIGH -> "Cao" to Color(0xFFFF5722)
-        TrackerPriority.CRITICAL -> "Khẩn cấp" to Color(0xFFF44336)
+        TrackerPriority.LOW -> "Low" to Color(0xFF4CAF50)
+        TrackerPriority.MEDIUM -> "Medium" to Color(0xFFFF9800)
+        TrackerPriority.HIGH -> "High" to Color(0xFFFF5722)
+        TrackerPriority.CRITICAL -> "Critical" to Color(0xFFF44336)
     }
     
     Surface(
@@ -673,9 +673,9 @@ fun KPICard(
                     ) {
                         Text(
                             text = when (kpi.pillar) {
-                                ESGPillar.ENVIRONMENTAL -> "🌱 Môi trường"
-                                ESGPillar.SOCIAL -> "👥 Xã hội"
-                                ESGPillar.GOVERNANCE -> "🏛️ Quản trị"
+                                ESGPillar.ENVIRONMENTAL -> "🌱 Environmental"
+                                ESGPillar.SOCIAL -> "👥 Social"
+                                ESGPillar.GOVERNANCE -> "🏛️ Governance"
                             },
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                             style = MaterialTheme.typography.bodySmall,
@@ -734,14 +734,14 @@ fun KPICard(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "Mục tiêu: ${kpi.targetValue} ${kpi.unit}",
+                        text = "Target: ${kpi.targetValue} ${kpi.unit}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     
                     if (kpi.currentValue != null) {
                         Text(
-                            text = "Hiện tại: ${kpi.currentValue} ${kpi.unit}",
+                            text = "Current: ${kpi.currentValue} ${kpi.unit}",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -773,7 +773,7 @@ fun KPICard(
                     modifier = Modifier.size(16.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Cập nhật giá trị")
+                Text("Update Value")
             }
         }
     }
@@ -803,14 +803,14 @@ fun FilterSection(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Bộ lọc",
+                text = "Filter",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
             
             // Status Filter
             Text(
-                text = "Trạng thái",
+                text = "Status",
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -851,13 +851,13 @@ fun StatusFilterChip(
     ) {
         Text(
             text = when (status) {
-                TrackerStatus.PLANNED -> "Đã lên kế hoạch"
-                TrackerStatus.IN_PROGRESS -> "Đang thực hiện"
-                TrackerStatus.COMPLETED -> "Đã hoàn thành"
-                TrackerStatus.CANCELLED -> "Đã hủy"
-                TrackerStatus.ON_HOLD -> "Tạm dừng"
-                TrackerStatus.OVERDUE -> "Quá hạn"
-                null -> "Tất cả"
+                TrackerStatus.PLANNED -> "Planned"
+                TrackerStatus.IN_PROGRESS -> "In Progress"
+                TrackerStatus.COMPLETED -> "Completed"
+                TrackerStatus.CANCELLED -> "Cancelled"
+                TrackerStatus.ON_HOLD -> "On Hold"
+                TrackerStatus.OVERDUE -> "Overdue"
+                null -> "All"
             },
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
             style = MaterialTheme.typography.bodySmall,
@@ -894,7 +894,7 @@ fun EmptyState(
         )
         
         Button(onClick = onAddActivity) {
-            Text("Thêm hoạt động đầu tiên")
+            Text("Add First Activity")
         }
     }
 }

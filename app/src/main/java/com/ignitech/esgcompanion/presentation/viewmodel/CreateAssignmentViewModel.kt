@@ -67,7 +67,7 @@ class CreateAssignmentViewModel @Inject constructor(
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    error = e.message ?: "Có lỗi xảy ra khi tạo bài tập"
+                    error = e.message ?: "Error creating assignment"
                 )
             }
         }

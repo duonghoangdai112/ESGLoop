@@ -558,7 +558,7 @@ fun AttemptStatusChip(
 fun AchievementCard() {
     Column {
         Text(
-            text = "Thành tích học tập",
+            text = "Learning Achievements",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSurface
@@ -571,17 +571,17 @@ fun AchievementCard() {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             AchievementItemCard(
-                title = "Bài hoàn thành",
+                title = "Completed Lessons",
                 value = "12",
                 modifier = Modifier.weight(1f)
             )
             AchievementItemCard(
-                title = "Điểm trung bình",
+                title = "Average Score",
                 value = "85%",
                 modifier = Modifier.weight(1f)
             )
             AchievementItemCard(
-                title = "Chứng chỉ",
+                title = "Certificates",
                 value = "3",
                 modifier = Modifier.weight(1f)
             )
@@ -639,10 +639,10 @@ enum class QuizCategory(
     val icon: String,
     val color: Color
 ) {
-    ENVIRONMENTAL("Môi trường", "🌱", ESGSuccess),
-    SOCIAL("Xã hội", "👥", ESGInfo),
-    GOVERNANCE("Quản trị", "🏛️", ESGWarning),
-    SUSTAINABILITY("Bền vững", "♻️", ESGSuccess)
+    ENVIRONMENTAL("Environmental", "🌱", ESGSuccess),
+    SOCIAL("Social", "👥", ESGInfo),
+    GOVERNANCE("Governance", "🏛️", ESGWarning),
+    SUSTAINABILITY("Sustainability", "♻️", ESGSuccess)
 }
 
 data class Quiz(
@@ -661,8 +661,8 @@ private fun getQuizzesForCategory(category: QuizCategory): List<Quiz> {
         QuizCategory.ENVIRONMENTAL -> listOf(
             Quiz(
                 id = "env_quiz_001",
-                title = "Nguyên tắc môi trường cơ bản",
-                description = "Kiểm tra kiến thức về bảo vệ môi trường và phát triển bền vững",
+                title = "Basic Environmental Principles",
+                description = "Test your knowledge about environmental protection and sustainable development",
                 category = category,
                 questionCount = 20,
                 timeLimit = 30,
@@ -670,8 +670,8 @@ private fun getQuizzesForCategory(category: QuizCategory): List<Quiz> {
             ),
             Quiz(
                 id = "env_quiz_002",
-                title = "Quản lý chất thải",
-                description = "Hiểu biết về phân loại và xử lý chất thải",
+                title = "Waste Management",
+                description = "Understanding waste classification and treatment",
                 category = category,
                 questionCount = 15,
                 timeLimit = 25
@@ -680,8 +680,8 @@ private fun getQuizzesForCategory(category: QuizCategory): List<Quiz> {
         QuizCategory.SOCIAL -> listOf(
             Quiz(
                 id = "social_quiz_001",
-                title = "Quyền lao động",
-                description = "Kiến thức về quyền và phúc lợi người lao động",
+                title = "Labor Rights",
+                description = "Knowledge about workers' rights and benefits",
                 category = category,
                 questionCount = 18,
                 timeLimit = 25,
@@ -691,8 +691,8 @@ private fun getQuizzesForCategory(category: QuizCategory): List<Quiz> {
         QuizCategory.GOVERNANCE -> listOf(
             Quiz(
                 id = "gov_quiz_001",
-                title = "Quản trị doanh nghiệp",
-                description = "Hiểu biết về cơ cấu quản trị và minh bạch",
+                title = "Corporate Governance",
+                description = "Understanding governance structure and transparency",
                 category = category,
                 questionCount = 22,
                 timeLimit = 35,
@@ -702,8 +702,8 @@ private fun getQuizzesForCategory(category: QuizCategory): List<Quiz> {
         QuizCategory.SUSTAINABILITY -> listOf(
             Quiz(
                 id = "sustain_quiz_001",
-                title = "Phát triển bền vững tổng quan",
-                description = "Kiến thức tổng hợp về phát triển bền vững",
+                title = "Sustainable Development Overview",
+                description = "Comprehensive knowledge about sustainable development",
                 category = category,
                 questionCount = 25,
                 timeLimit = 40
@@ -717,7 +717,7 @@ private fun getRecentAttempts(): List<QuizAttempt> {
         QuizAttempt(
             id = "attempt_001",
             userId = "academic_001",
-            quizTitle = "Nguyên tắc môi trường cơ bản",
+            quizTitle = "Basic Environmental Principles",
             totalQuestions = 20,
             correctAnswers = 17,
             score = 85,
@@ -728,7 +728,7 @@ private fun getRecentAttempts(): List<QuizAttempt> {
         QuizAttempt(
             id = "attempt_002",
             userId = "academic_001",
-            quizTitle = "Quản trị doanh nghiệp",
+            quizTitle = "Corporate Governance",
             totalQuestions = 22,
             correctAnswers = 15,
             score = 68,

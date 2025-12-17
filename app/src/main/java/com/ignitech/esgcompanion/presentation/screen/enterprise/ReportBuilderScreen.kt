@@ -370,27 +370,27 @@ private fun getTemplateBenefits(template: ReportStandard): String {
 private fun getTemplateSections(template: ReportStandard): List<ReportSection> {
     return when (template) {
         ReportStandard.GRI -> listOf(
-            ReportSection("1", "Thông tin tổng quan", "Giới thiệu về doanh nghiệp và báo cáo", listOf("Tổng quan công ty", "Phạm vi báo cáo", "Phương pháp luận")),
-            ReportSection("2", "Quản trị và chiến lược", "Cơ cấu quản trị và chiến lược ESG", listOf("Cơ cấu quản trị", "Chiến lược ESG", "Quản lý rủi ro")),
-            ReportSection("3", "Môi trường", "Tác động môi trường và biện pháp", listOf("Khí thải", "Nước", "Chất thải", "Đa dạng sinh học")),
-            ReportSection("4", "Xã hội", "Tác động xã hội và trách nhiệm", listOf("Lao động", "Cộng đồng", "Nhân quyền", "An toàn")),
-            ReportSection("5", "Kinh tế", "Tác động kinh tế và tài chính", listOf("Hiệu quả kinh tế", "Đầu tư", "Thuế", "Tác động địa phương"))
+            ReportSection("1", "Overview", "Introduction to the enterprise and report", listOf("Company overview", "Report scope", "Methodology")),
+            ReportSection("2", "Governance and Strategy", "Governance structure and ESG strategy", listOf("Governance structure", "ESG strategy", "Risk management")),
+            ReportSection("3", "Environment", "Environmental impact and measures", listOf("Emissions", "Water", "Waste", "Biodiversity")),
+            ReportSection("4", "Social", "Social impact and responsibility", listOf("Labor", "Community", "Human rights", "Safety")),
+            ReportSection("5", "Economic", "Economic and financial impact", listOf("Economic performance", "Investment", "Tax", "Local impact"))
         )
         ReportStandard.SASB -> listOf(
-            ReportSection("1", "Thông tin ngành", "Thông tin cụ thể theo ngành", listOf("Phân khúc ngành", "Rủi ro ESG", "Cơ hội")),
-            ReportSection("2", "Môi trường", "Tác động môi trường tài chính", listOf("Khí thải", "Nước", "Chất thải", "Năng lượng")),
-            ReportSection("3", "Xã hội", "Tác động xã hội tài chính", listOf("Lao động", "An toàn", "Cộng đồng", "Sản phẩm")),
-            ReportSection("4", "Quản trị", "Quản trị và rủi ro", listOf("Cơ cấu quản trị", "Quản lý rủi ro", "Tuân thủ", "Đạo đức"))
+            ReportSection("1", "Industry Information", "Industry-specific information", listOf("Industry segments", "ESG risks", "Opportunities")),
+            ReportSection("2", "Environment", "Financial environmental impact", listOf("Emissions", "Water", "Waste", "Energy")),
+            ReportSection("3", "Social", "Financial social impact", listOf("Labor", "Safety", "Community", "Products")),
+            ReportSection("4", "Governance", "Governance and risk", listOf("Governance structure", "Risk management", "Compliance", "Ethics"))
         )
         ReportStandard.VN_ENVIRONMENT -> listOf(
-            ReportSection("1", "Thông tin doanh nghiệp", "Thông tin cơ bản về doanh nghiệp", listOf("Giới thiệu", "Lĩnh vực hoạt động", "Quy mô")),
-            ReportSection("2", "Tuân thủ pháp luật", "Tuân thủ quy định VN", listOf("Giấy phép", "Báo cáo môi trường", "An toàn lao động")),
-            ReportSection("3", "Môi trường", "Bảo vệ môi trường", listOf("Xử lý chất thải", "Tiết kiệm năng lượng", "Giảm phát thải")),
-            ReportSection("4", "Xã hội", "Trách nhiệm xã hội", listOf("Lao động", "Cộng đồng", "Đào tạo", "Phúc lợi"))
+            ReportSection("1", "Enterprise Information", "Basic enterprise information", listOf("Introduction", "Business activities", "Scale")),
+            ReportSection("2", "Legal Compliance", "Vietnamese regulatory compliance", listOf("Licenses", "Environmental reports", "Labor safety")),
+            ReportSection("3", "Environment", "Environmental protection", listOf("Waste treatment", "Energy efficiency", "Emission reduction")),
+            ReportSection("4", "Social", "Social responsibility", listOf("Labor", "Community", "Training", "Welfare"))
         )
         ReportStandard.CUSTOM -> listOf(
-            ReportSection("1", "Phần tùy chỉnh 1", "Mô tả phần báo cáo", listOf("Yêu cầu 1", "Yêu cầu 2")),
-            ReportSection("2", "Phần tùy chỉnh 2", "Mô tả phần báo cáo", listOf("Yêu cầu 1", "Yêu cầu 2"))
+            ReportSection("1", "Custom Section 1", "Report section description", listOf("Requirement 1", "Requirement 2")),
+            ReportSection("2", "Custom Section 2", "Report section description", listOf("Requirement 1", "Requirement 2"))
         )
     }
 }
@@ -398,28 +398,28 @@ private fun getTemplateSections(template: ReportStandard): List<ReportSection> {
 private fun getTemplateAdditionalRequirements(template: ReportStandard): List<String> {
     return when (template) {
         ReportStandard.GRI -> listOf(
-            "Báo cáo phải được kiểm toán bởi bên thứ ba",
-            "Cần cung cấp dữ liệu định lượng cho ít nhất 2 năm",
-            "Phải có báo cáo tóm tắt cho stakeholders",
-            "Cần đăng tải công khai trên website công ty"
+            "Report must be audited by a third party",
+            "Quantitative data required for at least 2 years",
+            "Executive summary report required for stakeholders",
+            "Must be publicly published on company website"
         )
         ReportStandard.SASB -> listOf(
-            "Tập trung vào metrics có tác động tài chính",
-            "Dữ liệu phải được xác minh bởi kiểm toán viên",
-            "Báo cáo theo format chuẩn của SASB",
-            "Cập nhật hàng năm và so sánh với năm trước"
+            "Focus on financially material metrics",
+            "Data must be verified by auditors",
+            "Report in standard SASB format",
+            "Annual updates with year-over-year comparison"
         )
         ReportStandard.VN_ENVIRONMENT -> listOf(
-            "Tuân thủ quy định của Bộ Tài nguyên và Môi trường",
-            "Báo cáo bằng tiếng Việt",
-            "Cần có xác nhận của cơ quan có thẩm quyền",
-            "Đăng tải trên cổng thông tin điện tử của cơ quan quản lý"
+            "Comply with Ministry of Natural Resources and Environment regulations",
+            "Report in Vietnamese",
+            "Confirmation from competent authority required",
+            "Publish on the management agency's electronic information portal"
         )
         ReportStandard.CUSTOM -> listOf(
-            "Tùy chỉnh theo yêu cầu cụ thể của doanh nghiệp",
-            "Có thể kết hợp nhiều chuẩn khác nhau",
-            "Cần xác định rõ metrics và KPIs",
-            "Thiết kế phù hợp với đối tượng đọc báo cáo"
+            "Customize according to specific enterprise requirements",
+            "Can combine multiple standards",
+            "Clearly define metrics and KPIs",
+            "Design appropriate for report audience"
         )
     }
 }

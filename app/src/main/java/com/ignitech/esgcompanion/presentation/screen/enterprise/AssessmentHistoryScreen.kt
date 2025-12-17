@@ -138,10 +138,30 @@ fun AssessmentHistoryScreen(
                 // Group assessments by period (quarter)
                 val assessmentsByPeriod = (uiState.historicalAssessments + uiState.currentAssessments)
                     .groupBy { it.assessmentPeriod }
-                    .toSortedMap(compareByDescending { 
-                        // Sort by quarter: Q4 > Q3 > Q2 > Q1
-                        it.substringBefore("-").replace("Q", "").toIntOrNull() ?: 0
-                    })
+                    .toSortedMap { period1, period2 ->
+                        // Sort by year DESC, then by quarter DESC (Q3-2025 > Q2-2025 > Q1-2025 > Q4-2024 > ...)
+                        val parts1 = period1.split("-")
+                        val parts2 = period2.split("-")
+                        
+                        if (parts1.size == 2 && parts2.size == 2) {
+                            val year1 = parts1[1].toIntOrNull() ?: 0
+                            val year2 = parts2[1].toIntOrNull() ?: 0
+                            
+                            // Compare years first (descending)
+                            val yearCompare = year2.compareTo(year1)
+                            if (yearCompare != 0) {
+                                yearCompare
+                            } else {
+                                // If same year, compare quarters (descending)
+                                val quarter1 = parts1[0].replace("Q", "").toIntOrNull() ?: 0
+                                val quarter2 = parts2[0].replace("Q", "").toIntOrNull() ?: 0
+                                quarter2.compareTo(quarter1)
+                            }
+                        } else {
+                            // Fallback: compare as strings
+                            period2.compareTo(period1)
+                        }
+                    }
                 
                 if (assessmentsByPeriod.isEmpty()) {
                     item {

@@ -38,6 +38,7 @@ fun ESGAssessmentWorkScreen(
     val questions by viewModel.questions.collectAsStateWithLifecycle()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
     val isSaving by viewModel.isSaving.collectAsStateWithLifecycle()
+    val isSubmitting by viewModel.isSubmitting.collectAsStateWithLifecycle()
     val saveResult by viewModel.saveResult.collectAsStateWithLifecycle()
     val savedAnswers by viewModel.savedAnswers.collectAsStateWithLifecycle()
     
@@ -123,13 +124,23 @@ fun ESGAssessmentWorkScreen(
                     }
                     
                     Button(
-                        onClick = { /* TODO: Submit assessment */ },
+                        onClick = { 
+                            viewModel.submitAssessment(userAnswers.toMap())
+                        },
+                        enabled = !isSubmitting && !isSaving && userAnswers.isNotEmpty(),
                         modifier = Modifier.weight(1f),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(id = R.color.interactive_primary)
                         )
                     ) {
-                        Text("Complete")
+                        if (isSubmitting) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(16.dp),
+                                color = MaterialTheme.colorScheme.onPrimary
+                            )
+                        } else {
+                            Text("Complete")
+                        }
                     }
                 }
             }
@@ -236,13 +247,26 @@ fun ESGAssessmentWorkScreen(
     
     // Show save result dialog
     saveResult?.let { result ->
+        val isSuccess = result.contains("successfully", ignoreCase = true) || result.contains("completed", ignoreCase = true) || result.contains("saved", ignoreCase = true)
         AlertDialog(
-            onDismissRequest = { viewModel.clearSaveResult() },
+            onDismissRequest = { 
+                viewModel.clearSaveResult()
+                if (isSuccess) {
+                    navController.popBackStack()
+                }
+            },
             containerColor = Color.White,
-            title = { Text("Results") },
+            title = { Text(if (isSuccess) "Success" else "Notification") },
             text = { Text(result) },
             confirmButton = {
-                TextButton(onClick = { viewModel.clearSaveResult() }) {
+                TextButton(
+                    onClick = { 
+                        viewModel.clearSaveResult()
+                        if (isSuccess) {
+                            navController.popBackStack()
+                        }
+                    }
+                ) {
                     Text("OK")
                 }
             }

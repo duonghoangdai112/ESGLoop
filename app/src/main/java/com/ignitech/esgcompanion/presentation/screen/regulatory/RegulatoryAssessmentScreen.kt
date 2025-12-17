@@ -537,9 +537,9 @@ private fun getPillarIcon(pillar: ESGPillar): String {
 
 private fun getPillarName(pillar: ESGPillar): String {
     return when (pillar) {
-        ESGPillar.ENVIRONMENTAL -> "Môi trường"
-        ESGPillar.SOCIAL -> "Xã hội"
-        ESGPillar.GOVERNANCE -> "Quản trị"
+        ESGPillar.ENVIRONMENTAL -> "Environmental"
+        ESGPillar.SOCIAL -> "Social"
+        ESGPillar.GOVERNANCE -> "Governance"
     }
 }
 
@@ -547,7 +547,7 @@ private fun getPillarName(pillar: ESGPillar): String {
 private fun getKeyStatistics(timeRange: TimeRange): List<KeyStatistic> {
     return listOf(
         KeyStatistic(
-            label = "Tổng đánh giá",
+            label = "Total Assessments",
             value = "1,234",
             icon = Icons.Default.Assignment,
             color = ESGSuccess,

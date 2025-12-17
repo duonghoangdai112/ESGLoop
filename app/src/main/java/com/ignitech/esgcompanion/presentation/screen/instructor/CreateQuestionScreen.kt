@@ -353,7 +353,7 @@ fun CreateQuestionScreen(
         // Question Tags
         item {
             Text(
-                text = "Thẻ tag",
+                text = "Tags",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface

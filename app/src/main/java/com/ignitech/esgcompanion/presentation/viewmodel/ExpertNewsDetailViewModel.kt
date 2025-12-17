@@ -42,7 +42,7 @@ class ExpertNewsDetailViewModel @Inject constructor() : ViewModel() {
             } else {
                 _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    error = "Không tìm thấy tin tức"
+                    error = "News not found"
                 )
             }
         }

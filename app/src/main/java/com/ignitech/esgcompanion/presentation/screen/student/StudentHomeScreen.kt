@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,7 +30,7 @@ import com.ignitech.esgcompanion.presentation.screen.LearningHubScreen
 fun StudentHomeScreen(
     navController: NavController
 ) {
-    var selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     
     Scaffold(
         bottomBar = {
@@ -142,7 +143,7 @@ fun StudentHomeScreen(
     ) { paddingValues ->
         when (selectedTab) {
             0 -> StudentHomeContent(navController = navController, modifier = Modifier.padding(paddingValues))
-            1 -> StudentLearningScreen(modifier = Modifier.padding(paddingValues))
+            1 -> StudentLearningScreen(navController = navController, modifier = Modifier.padding(paddingValues))
             2 -> StudentAssignmentsScreen(modifier = Modifier.padding(paddingValues), navController = navController)
             3 -> StudentAssessmentScreen(navController = navController, modifier = Modifier.padding(paddingValues))
         }
@@ -341,7 +342,7 @@ fun StudentHomeContent(
             // Achievements
             item {
                 Text(
-                    text = "Thành Tích",
+                    text = "Achievements",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
@@ -353,13 +354,13 @@ fun StudentHomeContent(
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     AchievementCard(
-                        title = "Học sinh chăm",
-                        description = "Hoàn thành 15 bài học",
+                        title = "Diligent Student",
+                        description = "Complete 15 lessons",
                         modifier = Modifier.weight(1f)
                     )
                     AchievementCard(
-                        title = "Người học tích cực",
-                        description = "Tham gia 8 hoạt động",
+                        title = "Active Learner",
+                        description = "Participate in 8 activities",
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -420,9 +421,9 @@ fun KnowledgeAreaCard(
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = when (pillarInfo.pillar) {
-                    ESGPillar.ENVIRONMENTAL -> "Môi trường"
-                    ESGPillar.SOCIAL -> "Xã hội"
-                    ESGPillar.GOVERNANCE -> "Quản trị"
+                    ESGPillar.ENVIRONMENTAL -> "Environmental"
+                    ESGPillar.SOCIAL -> "Social"
+                    ESGPillar.GOVERNANCE -> "Governance"
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,

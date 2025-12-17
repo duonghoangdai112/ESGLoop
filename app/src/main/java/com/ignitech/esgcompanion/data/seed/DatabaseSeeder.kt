@@ -43,13 +43,13 @@ class DatabaseSeeder @Inject constructor(
         try {
             println("DEBUG: Starting database seeding...")
             
-            // Kiểm tra xem đã có dữ liệu chưa
+            // Check if data already exists
             val assignmentCount = assignmentDao.getAssignmentCount()
             println("DEBUG: Assignment count: $assignmentCount")
             
             if (assignmentCount > 0) {
                 println("DEBUG: Database already has data, skipping seed")
-                return@withContext // Đã có dữ liệu, không cần seed
+                return@withContext // Data already exists, no need to seed
             }
             
             println("DEBUG: Database is empty, starting to seed...")
@@ -134,6 +134,11 @@ class DatabaseSeeder @Inject constructor(
             studentDao.insertStudents(students)
             println("DEBUG: Seeded ${students.size} students")
             
+            // Seed Learning Hub data
+            println("DEBUG: Seeding Learning Hub data...")
+            esgAssessmentRepository.initializeLearningHub()
+            println("DEBUG: Learning Hub data seeded")
+            
             println("DEBUG: Database seeding completed successfully!")
             
         } catch (e: Exception) {
@@ -146,7 +151,7 @@ class DatabaseSeeder @Inject constructor(
     suspend fun clearAndReseed() = withContext(Dispatchers.IO) {
         try {
             println("DEBUG: Starting clearAndReseed")
-            // Xóa dữ liệu cũ
+            // Delete old data
             assignmentDao.deleteAllAssignments()
             assignmentQuestionDao.deleteAllQuestions()
             userDao.clearUser()
@@ -156,10 +161,10 @@ class DatabaseSeeder @Inject constructor(
             classDao.deleteAllClasses()
             studentDao.deleteAllStudents()
             
-            // Xóa tracker data cũ
+            // Delete old tracker data
             esgAssessmentRepository.clearTrackerData()
             
-            // Seed lại
+            // Re-seed
             seedDatabase()
             println("DEBUG: clearAndReseed completed successfully")
             
